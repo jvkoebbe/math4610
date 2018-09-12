@@ -30,9 +30,9 @@
     </li>
     <li> Problem: In this problem, you will investigate problems that occur due to finite precision of arithmetic. In the text,
       one standard approximation for derivatives involves the definition
-      $$\int\ f(x)\ dx = \lim_{h\rightarrow 0}\ {{f(x+h)-f(x)}\over{h}}$$
+      $$\frac{d}{dx}\ f(x)\ dx = \lim_{h\rightarrow 0}\ {{f(x+h)-f(x)}\over{h}}$$
       The approximation
-      $$\int\ f(x)\ dx \approx {{f(x+h)-f(x)}\over{h}}$$
+      $$\frac{d}{dx}\ f(x)\ dx \approx {{f(x+h)-f(x)}\over{h}}$$
       is used in many application. For example, in the numerical solution of differential equations, the approximation above is
       used quite often. Write code that implements this approximation for various values of the paramter $h$. Use the routine
       you create, along with the code for the relative and absolute error, to investigate this approximation as $h$ tends to
@@ -54,7 +54,7 @@
           Compare the result with the direct use of the derivative formula.
         </li>
         <li> In this problem, approximate the derivative of $f(x)=sin(x)$ at $x_0=0$ using the difference
-          $$\int\ f(x)\ dx \approx {{f(x+h)-f(x)}\over{h}}$$
+          $$\frac{d}{dx}\ f(x)\ dx \approx {{f(x+h)-f(x)}\over{h}}$$
           and use a Taylor series expansion in place of the evaluation of the sine function. Recall that $sin(0)=0$. Rewrite
           the expression and make sure the derivative is accurately approximated as $h$ is taken closer to zero. What is the
           computational difference between the initial expression and the rewritten expression?
