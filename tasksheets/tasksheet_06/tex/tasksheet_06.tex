@@ -1,41 +1,35 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title> Math 4610 Fundamentals of Computational Mathematics Tasksheet</title>
-  <link href="homework.css" rel="stylesheet" type="text/css" />
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-  </script>
-  <script type="text/javascript" async
-    src="https://example.com/MathJax.js?config=TeX-AMS_CHTML">
-  </script>
-  <script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
-  </script>
-</head>
-<body>
+\documentclass[10pt,fleqn]{article}
+\usepackage{hyperref}
+\usepackage{graphicx}
 
+\setlength{\topmargin}{-.75in}
+\addtolength{\textheight}{2.00in}
+\setlength{\oddsidemargin}{.00in}
+\addtolength{\textwidth}{.75in}
 
-<hr>
+\nofiles
 
+\pagestyle{empty}
+
+\setlength{\parindent}{0in}
+
+\input{/cygdrive/m/tex/commands/commands}
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip0.1in\hrule\vskip0.1in \noindent
 {\bf{\Large Math 4610 Fundamentals of Numerical Analysis Tasksheet 6}}
-
-<hr>
-
+\vskip0.1in\hrule\vskip0.1in \noindent
 The problems for the Tasksheet 6 are included below. The deadline for turning
 in your work on these problems will be posted on the repository. In addition,
 you will turn in your work through the math4610 repository. A directory will be
 constructed that will be used as a place to store your work.
-
-<hr>
-
+\vskip0.1in\hrule\vskip0.1in \noindent
 {\bf{\large Tasks}}
-
-<hr>
-
-<ul>
-
-  <li> <b> Task 1:</b>
+\vskip0.1in\hrule\vskip0.1in \noindent
+\begin{trivlist}
+  \item[\bf Task 1:]
     In this problem consider the function
     \[
       f(x) = e^{-x^2}\ sin(4\ x^2-1.0) + 0.051
@@ -45,54 +39,40 @@ constructed that will be used as a place to store your work.
     interval around \(x^*=0.0\) to bracket the root and then apply the other
     methods to verify they work. Write a code that is linked to your shared
     library, jar-file, or python module folder.
-  </li>
-<hr>
-  <li>
-    <b>Task 2:</b> Apply your Newton method to the function in Task 1 by
+\vskip0.1in\hrule\vskip0.1in \noindent
+  \item[\bf Task 2:] Apply your Newton method to the function in Task 1 by
     starting \(x_0=-5.0\) and \(x_0=6\). If we want the root closest to zero, as
     in Task1, compare the results obtained to the root we found in the previous
     Task. What went right or wrong?
-  </li>
-<hr>
-  <li>
-    <b> Task 3:</b> Come up with an algorithm that starts by applying something
+\vskip0.1in\hrule\vskip0.1in \noindent
+  \item[\bf Task 3:] Come up with an algorithm that starts by applying something
     like a hybrid method starting with an initial interval, \([-5,6]\), that
     will find the closest root to zero. Hint: you will need to modify the logic
     a little in the Bisection part to avoid finding different zeros than the one
     found in Task 1.
-  </li>
-<hr>
-  <li>
-    <b>Task 4:</b> Repeat Task 3 for the hybrid method using the secant
+\vskip0.1in\hrule\vskip0.1in \noindent
+  \item[\bf Task 4:] Repeat Task 3 for the hybrid method using the secant
     method. Use the results to verify the results in Task 3.
-  </li>
-<hr>
-  <li>
-    <b>Task 5:</b> Let's change the problem a bit. Use your hybrid code to
+\vskip0.1in\hrule\vskip0.1in \noindent
+  \item[\bf Task 5:] Let's change the problem a bit. Use your hybrid code to
     find as many roots as possible in the interval, \([-5,6]\)/. Note that you
     will need to write a bit of logic into your code that breaks the interval
     into intervals acceptable for use of the Bisection method. Hint: Write code
     that will produce subintervals where \(f(x_k)\ f(x_{k+1})<0\). You may need
     to refine the points which means dividing the initial interval into smaller
     and smaller intervals.
-  </li>
-<hr>
-  <li>
-    <b>[\bf Task 6:</b> Search the internet for sites that discuss location of
+\vskip0.1in\hrule\vskip0.1in \noindent
+  \item[\bf Task 6:] Search the internet for sites that discuss location of
     multiple roots in one dimension. Discuss the methods used to find additional
     toots. Write a brief summary of what you find including the pros and cons of
     the methods. Your write up should be a brief paragraph (3 or 4 sentences)
     that describe your findings. Include links to the sites you cite.
-  </li>
-</ul>
-
-<hr>
-
-  <a href="../../tasksheet_05/html/tasksheet_05.html"> Previous </a> |
-  <a href="../../toc/md/tasksheet_toc.md"> Table of Contents </a> |
-  <a href="../../tasksheet_07/html/tasksheet_07.html"> Next </a>
-
-<hr>
-
-</body>
-</html>
+\end{trivlist}
+\vskip0.1in\hrule\vskip0.1in \noindent
+  \href{../../tasksheet_05/html/tasksheet_05.html}{Previous}
+  \href{../../toc/md/tasksheet_toc.md}{Table of Contents} |
+  \href{../../tasksheet_07/html/tasksheet_07.html}{Next}
+\vskip0.1in\hrule\vskip0.1in \noindent
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

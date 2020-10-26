@@ -22,35 +22,176 @@
 \vskip0.1in\hrule\vskip0.1in \noindent
 {\bf Math 4610 Fundamentals of Computational Mathematics  - Topic 17.}
 \vskip0.1in\hrule\vskip0.1in \noindent
-In this section we will talk about inevitable errors in number representations
-on computers. The finite limitations of computers and other devices mean that we
-cannot exactly represent most numbers on the real line. 
+In this section we will focus on the finite limitations of number representation
+on computers. Computer capabilities have advanced rapidly over the past decades.
+Computer hardware and software use a finite number of bits or memory addresses
+to represent numbers.
 
-In this section we will focus on the limitations of number representation on
-computers. As mentioned above, the capabilities of computers have advanced
-rapidly. Over the years computer
-archetecture has increased resolution by using more bits to account for smaller
-and larger numbers. Starting with 8-bit, 16-bit, and then onto 32-bit and 64-bit
-numbers, the resolution has gotten better, but will never be able to represent
-an infinite number of digits needed to store irrational numbers.
+Over the years computer archetecture has increased this resolution by using more
+bits
+to account for smaller and larger numbers. Starting with 8-bit, 16-bit, and then
+onto 32-bit and 64-bit numbers, the resolution has gotten better, but will never
+be able to represent an infinite number of digits needed to store irrational
+numbers.
 
 Even a number like \(1/3\) must be truncated after a finite number of digits due
 to the way computers store numbers using bits. Data is stored in a binary format
 on all computers. So, the number \(1/3\) becomes
 \[
-  {1\over 3} = 0.10101010101010\ldots
+  ({1\over 3}_{10} = (0.10101010101010\ldots)_2
 \]
-The representation repeats, but it is necessary to use an infinite number of
-digits to exactly represent the number.
-
-
+where the subscript refers to the base of the number. The representation
+repeats, but still requires an infinite number of digits to exactly represent
+the number.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vskip0.1in\hrule\vskip0.1in
-\noindent
+\vskip0.1in\hrule\vskip0.1in \noindent
+{\bf Approximation Using Floating Point Numbers.} 
+\vskip0.1in\hrule\vskip0.1in \noindent
+It would be nice to be able to determine how well an arbitrary real number can
+be approximated before we do any other computations. In fact, we can determine
+the accuracy coding a simple loop. The idea is to add successively smaller
+numbers to a specific number that can be represented exactly in a computer
+register. For example, the number, \(x=0\), is a number that can be represented
+exactly in memory. Two other examples are \(x=1\) and \(x=2\). Powers of two up
+to a point can be represented exactly. We will use \(x=1\). A loop written in
+Java that will achieve our object is:
+\vskip0.1in\hrule\vskip0.1in \noindent
+\begin{verbatim}
+
+      //
+      // set up some variables
+      // ---------------------
+      //
+      float one = 1.0f;
+      float seps = 1.0f;
+      float appone = 1.0f;
+      //
+      // loop over more than enough iterations to computer the precision
+      // ---------------------------------------------------------------
+      //
+      for(int k=0; k<200) {
+        //
+        // compute the approximation
+        // -------------------------
+        //
+        appone = one + seps;
+        //
+        // test the approximation
+        // ----------------------
+        //
+        if(Math.abs(appone-one) == 0.0f) {
+          printf("single precision machine epsilon = " + seps);
+          return;
+        }
+        //
+        // reduce the perturbation values
+        // ------------------------------
+        //
+        seps = 0.5f * seps;
+        //
+      }
+
+\end{verbatim}
+\vskip0.1in\hrule\vskip0.1in \noindent
+This code will print a message as soon as the difference between the exact value
+of one and the approximation. There are a couple of notes that one should 
+consider in the code. Note that the lines that initialize values to numerical
+values need an additional \lq\lq f\rq\rq\ on the end of the numerical value. For
+example,
+\vskip0.1in\hrule\vskip0.1in \noindent
+\begin{verbatim}
+
+      float one = 1.0f;
+
+\end{verbatim}
+\vskip0.1in\hrule\vskip0.1in \noindent
+This ensures that the numbers are cast to float, which might be considered as
+single precision.
+
+The same code in double prevision can be written using the following.
+\vskip0.1in\hrule\vskip0.1in \noindent
+\begin{verbatim}
+
+      //
+      // set up some variables
+      // ---------------------
+      //
+      double one = 1.0;
+      double seps = 1.0;
+      double appone = 1.0;
+      //
+      //
+      // loop over more than enough iterations to computer the precision
+      // ---------------------------------------------------------------
+      //
+      for(int k=0; k<200) {
+        //
+        // compute the approximation
+        // -------------------------
+        //
+        appone = one + seps;
+        //
+        // test the approximation
+        // ----------------------
+        //
+        if(Math.abs(appone-one) == 0.0) {
+          printf("single precision machine epsilon = " + seps);
+          return;
+        }
+        //
+        // reduce the perturbation values
+        // ------------------------------
+        //
+        seps = 0.5 * seps;
+        //
+      }
+
+\end{verbatim}
+\vskip0.1in\hrule\vskip0.1in \noindent
+Note the omission of the \lq\lq\ f\rq\rq\ at the end of the constant values.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip0.1in\hrule\vskip0.1in \noindent
+{\bf Floating Point Notation} 
+\vskip0.1in\hrule\vskip0.1in \noindent
+It is helpful to have some notation to define the exact value of a number and an
+approximation. We will define the approximation of \(x\) as
+\[
+  x \apprx fl(x)
+\]
+We will measure the error via the error formula
+\[
+  \makebox{error } =  {{ | \apprx fl(x) - x | }\over{ | x | }}
+\]
+This gives a scaled value of the error. The scaling is determined by the size or
+magnitude of the exact number being approximated. So, for example, if \(x=1/3\)
+then the error will look like
+\[
+  \makebox{error } =  {{ | \apprx fl(1/3) - 1/3 | }\over{ | 1/3 | }}
+\]
+The floating point value of \(x=1/3\) is dependent on the computer and the
+precision implemented in hardware and software on your computer.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip0.1in\hrule\vskip0.1in \noindent
+{\bf IEEE Standards for Single and Double Prevision} 
+\vskip0.1in\hrule\vskip0.1in \noindent
+To standardize preision across platforms and all devices that might do some
+computational arithmetic, the Institute of Electrical and Electronics Engineers
+(IEEE) have established standards that computers must adhere to so that results
+from computing can be trusted across different computers produced by various
+companies - for example, Dell, HP, and a myriad of other computer vendors. The
+standards include both number representation and standards related to arithmetic
+operations. If we define
+\[
+  \epsilon = {1\over 2}\ 2^{-t}
+\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vskip0.1in\hrule\vskip0.1in \noindent
 {\bf Absolute and Relative Error: Introduction.} 
-\vskip0.1in\hrule\vskip0.1in
-\noindent
+\vskip0.1in\hrule\vskip0.1in \noindent
 In most cases, the solution of a mathematical problem can only be approximated.
 So, it would be a good idea to have a way to measure the error between the exact
 solution and the approximation of that solution. We will define two types of
@@ -69,11 +210,9 @@ the exact value.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vskip0.1in\hrule\vskip0.1in
-\noindent
+\vskip0.1in\hrule\vskip0.1in \noindent
 {\bf Absolute and Relative Error: Examples.} 
-\vskip0.1in\hrule\vskip0.1in
-\noindent
+\vskip0.1in\hrule\vskip0.1in \noindent
 If we are trying to find the roots of the polynomial
 $$
   p(x) = x^5 + x^3 - 2\ x^2 + 5\ x
@@ -99,11 +238,9 @@ zero root, we would need to use the absolute error as a measure.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vskip0.1in\hrule\vskip0.1in
-\noindent
+\vskip0.1in\hrule\vskip0.1in \noindent
 {\bf Absolute and Relative Error: A Numerical Example.} 
-\vskip0.1in\hrule\vskip0.1in
-\noindent
+\vskip0.1in\hrule\vskip0.1in \noindent
 As an illustration of how absolute and relative errors compare, we can consider
 some numerical examples. The following table gives a pair of numbers along with
 both the absolute and relative errors.
