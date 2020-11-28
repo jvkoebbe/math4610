@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Math 4610 Fundamentals of Computational Mathematics Tasksheet</title>
+  <link href="homework.css" rel="stylesheet" type="text/css" />
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+    src="https://example.com/MathJax.js?config=TeX-AMS_CHTML">
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body>
+  <hr>
+  <h1>
+    Math 4610 Fundamentals of Computational Mathematics:
+                         Tasksheet 9 Problem/Questions
+  </h1>
+  <hr>
+  <ul>
+    <hr>
+    <li> Task 1: Write routines that will compute the following linear algebra
+         operations on vectors.
+         <ul>
+           <li> vector addition
+           <li> vector subtraction
+           <li> scalar multiplication for vectors
+           <li> dot product for two vectors of the same length
+           <li> outer product for two vectors of the same length
+         </ul>
+         This should create 5 new routines to be included in your library or
+         repository in the case where you are programming in Python. Include
+         entries for each in your software manual.
+    </li>
+    <hr>
+    <li> Task 2: Write routines that will compute the following linear algebra
+         operations on vectors.
+         <ul>
+           <li> the magnitude of a vector - \(l_1\) norm version.
+           <li> the magnitude of a vector - \(l_2\) norm version.
+           <li> the magnitude of a vector - \(l_\infty\) norm version.
+           <li> the error between vectors - \(l_1\) norm version.
+           <li> the error between vectors - \(l_2\) norm version.
+           <li> the error between vectors - \(l_\infty\) norm version.
+         </ul>
+         This should create 6 new routines to be included in your library or
+         repository in the case where you are programming in Python. Include
+         entries for each in your software manual.
+    </li>
+    <hr>
+    <li> Task 3: : Write routines that will compute the following linear algebra
+         operations on matrices.
+         <ul>
+           <li> matrix addition
+           <li> matrix subtraction
+           <li> scalar multiplication for a matrix
+           <li> the transpose of a matrix
+           <li> the product of a rectangular matrix and vector
+           <li> the product of two rectangular matrices
+         </ul>
+         This should create 6 new routines to be included in your library or
+         repository in the case where you are programming in Python. Include
+         entries for each in your software manual.
+    </li>
+    <hr>
+    <li> Task 4: Write code to implement Jacobi Iteration for solving linear
+         systems of equations as discussed in class. Use the routines that you
+         have created in the previous 3 tasks to perform the operations. Use the
+         residual update form for the iteration. That is,
+         \[
+           r_k = b - A\ x_k
+           x_{k+1} = x_k + D^{-1}\ r_k
+         \]
+         should be used to perform the necessary operations.
+    </li>
+    <hr>
+    <li> Task 5: Compare the results for the Gaussian elimination with
+         backsubstitution to the results from Jacobi iteration. To set things up
+         do the following.
+         <ul> 
+           <li>
+             Generate a 100 by 100 symmetric, diagonally-dominant matrix for the
+             linear system.
+           </li>
+           <li>
+             Generate the right-hand side of the system by multiplying the
+             matrix you have into a vector of ones. 
+           </li>
+           <li>
+             Solve the system of equations (with both methods) and compare the
+             solution to the input vector of ones. Use the l2-norm routine to
+             do this comparison.
+           </li>
+         </ul> 
+    </li>
+    <hr>
+    <li> Task 6: Search the internet for sites that document the use of Jacobi
+         iteration and Gauss-Seidel iteration which is a slight modification of
+         Jacobi iteration. Write a brief paragraph (3 or 4 sentences) that
+         describe your findings. Include links to the sites you cite.
+    </li>
+    <hr>
+  </ul>
+
+  <hr>
+
+  <a href="../../tasksheet_08/html/tasksheet_08.html"> Previous </a> |
+  <a href="../../toc/md/tasksheet_toc.md"> Table of Contents </a> |
+  <a href="../../tasksheet_10/html/tasksheet_10.html"> Next </a>
+
+  <hr>
+
+</body>
+</html>
