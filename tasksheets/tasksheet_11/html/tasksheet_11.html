@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Math 4610 Fundamentals of Computational Mathematics Tasksheet</title>
+  <link href="homework.css" rel="stylesheet" type="text/css" />
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  <script type="text/javascript" async
+    src="https://example.com/MathJax.js?config=TeX-AMS_CHTML">
+  </script>
+  <script type="text/javascript" async
+    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+</head>
+<body>
+  <hr>
+  <h1>
+    Math 4610 Fundamentals of Computational Mathematics:
+                         Tasksheet 11 Problem/Questions
+  </h1>
+  <hr>
+  <ul>
+    <hr>
+    <li> Task 1: Document how many processors are available on the computer you
+         are using for this course. Use the OpenMP <b> omp_get_thread_num() </b>
+         and the <b> parallel </b> directive.
+    </li>
+    <hr>
+    <li> Task 2: Modify your vector and matrix addition routines to use OpenMP
+         on the loop over the operation. Try out the code on some big problems,
+         say \(n=100000\) to see how the code performs. Note that there should
+         be no data races in a naive implementation. That is
+         \[
+           z_i = u_i + v_i
+         \]
+         Use the OpenMP <b> parallel for </b> to do the parallelization. Include
+         documentation in your software manual for this problem. It might be a
+         good idea to include this in its own subsection for the manual.
+    </li>
+    <hr>
+    <li> Task 3: Try the same code from Task 2, but use the compiler
+         optimization flags to try to improve efficiency. In C, the flags are
+         shown as follows
+         <pre>
+           
+           koebbe% gcc -o vecadd_01 -O1 vecadd_test.c
+
+         </pre>
+         in C.
+    </li>
+    <hr>
+    <li> Task 4: Optimize the matrix-matrix routine you created in an earlier
+         task sheet. The sequential version should already be a part of your
+         shared library or other similar repository of routines. Put in a page
+         of documentation for the results of using this code. 
+    </li>
+    <hr>
+    <li> Task 5: Use OpenMP directives to optimize performance of the
+         matrix-matrix code and compare the results of the vanilla sequential
+         code to that of the optimization in Task 4 of this tasksheet and the
+         inherent optimization used in Task 4.
+    </li>
+    <hr>
+    <li> Task 6: Search the internet for sites that document the use of OpenMP
+         in applications. Write a brief paragraph (3 or 4 sentences) that
+         describe your findings. Include links to the sites you cite.
+    </li>
+    <hr>
+  </ul>
+
+  <hr>
+
+  <a href="../../tasksheet_10/html/tasksheet_10.html"> Previous </a> |
+  <a href="../../toc/md/tasksheet_toc.md"> Table of Contents </a> |
+  <a href="../../tasksheet_12/html/tasksheet_12.html"> Next </a>
+
+  <hr>
+
+</body>
+</html>
