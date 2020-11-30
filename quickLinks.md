@@ -14,6 +14,8 @@ computational mathematics.
 
 * [Math 4610 Homework/Tasks](./tasksheets/toc/md/tasksheet_toc.md)
 
+* [Math 4610 OpenMP Examples](./openmp/toc/md/openmp_toc.md)
+
 * [Math 4610 Project Descriptions](./projects/indexOfProjects.md)
 
 ## Review Materials:
