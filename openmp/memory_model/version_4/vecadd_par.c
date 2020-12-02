@@ -9,6 +9,7 @@
   #include <omp.h>
 #else
   #define omp_get_thread_num() 0
+  #define omp_set_num_threads(n) 1
 #endif
 
 int main(int argc, char *argv[])
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
   // setup some storage for the vector addition
   // ------------------------------------------
   //
-  int n = 3;
+  int n = 100000;
   int x[n];
   int y[n];
   int z[n];
@@ -50,17 +51,13 @@ int main(int argc, char *argv[])
   //
 for(int k=0; k<1000; k++) {
 
+omp_set_num_threads(4);
 #pragma omp parallel
 {
   #pragma omp for
   for(int i=0; i<n; i++)
   {
     z[i] = x[i] + y[i];
-//
-// the next line prints out different thread numbers as they are encountered
-// -------------------------------------------------------------------------
-//
-printf("thread = %d\n", omp_get_thread_num());
   }
 }
 

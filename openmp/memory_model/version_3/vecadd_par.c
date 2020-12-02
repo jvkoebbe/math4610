@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
   // setup some storage for the vector addition
   // ------------------------------------------
   //
-  int n = 3;
+  int n = 100000;
   int x[n];
   int y[n];
   int z[n];
@@ -56,11 +56,6 @@ for(int k=0; k<1000; k++) {
   for(int i=0; i<n; i++)
   {
     z[i] = x[i] + y[i];
-//
-// the next line prints out different thread numbers as they are encountered
-// -------------------------------------------------------------------------
-//
-printf("thread = %d\n", omp_get_thread_num());
   }
 }
 
