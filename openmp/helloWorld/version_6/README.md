@@ -63,3 +63,15 @@ Type in the commands:
    work in a parallel block does not necessarily go in order.
 
 4. Like most things Unix/C/C++ the thread numbers start with index 0, not 1.
+
+
+<hr>
+
+<a href="../version_5/README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../../toc/md/openmp_toc.md"> Next </a>
+
+<hr>
+

@@ -52,3 +52,14 @@ The output from this pair of commands is the following:
 
 3. Note that the output from running the executables in the above example are
    different. Students should try both.
+
+<hr>
+
+<a href="../README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../version_2/README.md"> Next </a>
+
+<hr>
+

@@ -8,8 +8,9 @@ translated into other languages with a bit of work.
 
   | Examples/Lessons| Link to Introduction |
   | ------------------- | :---------------: |
-  | **Hello World Example.** | [link](../../helloWorld/README.md) | Friday September 18, 2020, 5:00pm |
+  | **Hello World Example.** | [link](../../helloWorld/README.md) |
   | **Memory Model Exmples** | [link](../../memory_model/README.md) |
+  | **Vector Addition Examples** | [link](../../vecadd/README.md) |
 
 Using git, completed task sheets will be pulled to the instructors computer for
 grading. This means a pull request will be made for the contents in the

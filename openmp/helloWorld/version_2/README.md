@@ -82,3 +82,15 @@ console.
    with a description of what the function does will be covered in more detail
    later in the examples or in documentation for the OpenMP API that can be
    found at [www.openmp.org]www.openmp.org).
+
+
+<hr>
+
+<a href="../version_1/README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../version_3/README.md"> Next </a>
+
+<hr>
+

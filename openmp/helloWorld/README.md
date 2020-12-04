@@ -8,7 +8,7 @@ There are a few different links that might help with the material for OpenMP
 
 [OpenMP Documentation](https://www.openmp.org)
 
-## Examples to Get Started
+## Hello World Examples:
 
 * [Version 1](./version_1/README.md)
 
@@ -24,3 +24,14 @@ There are a few different links that might help with the material for OpenMP
 
 You can download the files above for your own use using the save as feature on
 any web browser out there.
+
+<hr>
+
+<a href="../toc/md/openmp_toc.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../toc/md/openmp_toc.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="./version_1/README.md"> Next </a>
+
+<hr>
+

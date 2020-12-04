@@ -216,3 +216,14 @@ only necessary to show how variables are handled in a standard C code.
 
 3. Note that the output from running the executables in the above example are
    different. Students should try additional examples.
+
+<hr>
+
+<a href="../README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../../toc/md/openmp_toc.md"> Next </a>
+
+<hr>
+

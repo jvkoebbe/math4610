@@ -77,3 +77,15 @@ Type in the commands:
 3. Students should note that there is no parallelism being used in the version
    of the code in this example. We will add in parallel blocks in the next
    example.
+
+
+<hr>
+
+<a href="../version_2/README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../version_4/README.md"> Next </a>
+
+<hr>
+

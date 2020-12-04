@@ -104,3 +104,15 @@ executable is run.
 2. What happens in this code is that if your computer is running 8 threads, each
    of these will perform the code in the parallel block. So, there will be a
    print for each of the threads.
+
+
+<hr>
+
+<a href="../version_3/README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../version_5/README.md"> Next </a>
+
+<hr>
+

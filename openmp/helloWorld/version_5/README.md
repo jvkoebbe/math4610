@@ -122,3 +122,15 @@ for this version.
    work in a parallel block does not necessarily go in order.
 
 4. Like most things Unix/C/C++ the thread numbers start with index 0, not 1.
+
+
+<hr>
+
+<a href="../version_4/README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../version_6/README.md"> Next </a>
+
+<hr>
+
