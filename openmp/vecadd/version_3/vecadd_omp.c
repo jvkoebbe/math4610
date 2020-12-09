@@ -10,7 +10,7 @@
 #else
   #define omp_get_thread_num() 0
 #endif
-
+//
 int main(int argc, char *argv[])
 {
   printf("\nBefore going parallel\n\n");
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
   // setup some storage for the vector addition
   // ------------------------------------------
   //
-  int n = 3;
+  int n = 100000;
   int x[n];
   int y[n];
   int z[n];
@@ -48,23 +48,28 @@ int main(int argc, char *argv[])
   // now, add-em
   // -----------
   //
-for(int k=0; k<1000; k++) {
+  for(int k=0; k<1000; k++) {
 
-#pragma omp parallel
-{
-  #pragma omp for
-  for(int i=0; i<n; i++)
-  {
-    z[i] = x[i] + y[i];
-//
-// the next line prints out different thread numbers as they are encountered
-// -------------------------------------------------------------------------
-//
-printf("thread = %d\n", omp_get_thread_num());
-  }
-}
+    #pragma omp parallel
+    {
 
-}
+      #pragma omp for
+
+      for(int i=0; i<n; i++)
+      {
+        z[i] = x[i] + y[i];
+        //
+        // the next line prints out different thread numbers as they are
+        // encountered
+        // -----------
+        //
+        //printf("thread = %d\n", omp_get_thread_num());
+        //
+      }
+
+    } // end of #pragma omp parallel
+
+  } // end of loop over the number of vector sums to computer
   //
   // get the end time from the work
   // ------------------------------

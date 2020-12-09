@@ -1,15 +1,24 @@
-# Example Description: Version 2.
+# Example Description: Version 3.
 
-In this example, we will look at parallelization of a loop. The operation
-involves the addition of two vectors that are large in the number of entries in
-the vector. This is a simple component-wise addition and does not require the
-use of any shared variables. The code uses the following directive inside a
-parallel region. This is
+In this version of the vector addition operation we will introduce OpenMP
+directives to try to speed up execution of the loop that adds the components
+of two vectors. The parallel construct used to optimize performance of a for
+loop in a code written in C.
 
         #pragma omp for
 
-There are no braces in this case since the directive is actually inside the
-parallel region in the code.
+This directive must appear in a parallel region. There are no braces in this
+case since the directive is actually inside a parallel region in the code. There
+is a shortcut to this that we will try out in another version of this exercise.
+
+The first thing to notice is that a **printf** is inserted in the code to make
+sure the various threads are actually doing something. In a production level
+code this should not be included unless you are debugging things. Print
+statements and the like take a lot of time.
+
+Note that without the **omp for** directive each thread will execute all of the
+code in the parallel region. With the directive, OpenMP will optimize the for
+loop.
 
 ## The Code for this Example:
 
@@ -19,16 +28,15 @@ Look for the second directive in the code for the for loop.
         #include <stdlib.h>
         #include <time.h>
         //
-        // the usual default stuff to compile in both sequential and parallel
-        // versions
-        // ---------
+        // the usual default stuff to compile in both sequential and parallel versions
+        // ---------------------------------------------------------------------------
         //
         #ifdef _OPENMP
           #include <omp.h>
         #else
           #define omp_get_thread_num() 0
         #endif
-
+        //
         int main(int argc, char *argv[])
         {
           printf("\nBefore going parallel\n\n");
@@ -36,7 +44,7 @@ Look for the second directive in the code for the for loop.
           // setup some storage for the vector addition
           // ------------------------------------------
           //
-          int n = 10;
+          int n = 100000;
           int x[n];
           int y[n];
           int z[n];
@@ -66,24 +74,28 @@ Look for the second directive in the code for the for loop.
           // now, add-em
           // -----------
           //
-        for(int k=0; k<1000; k++) {
+          for(int k=0; k<1000; k++) {
 
-        #pragma omp parallel
-        {
-          #pragma omp for
-          for(int i=0; i<n; i++)
-          {
-            z[i] = x[i] + y[i];
-        //
-        // the next line prints out different thread numbers as they are
-        // encountered
-        // -----------
-        //
-        printf("thread = %d\n", omp_get_thread_num());
-          }
-        }
+            #pragma omp parallel
+            {
 
-        }
+              #pragma omp for
+
+              for(int i=0; i<n; i++)
+              {
+                z[i] = x[i] + y[i];
+                //
+                // the next line prints out different thread numbers as they are
+                // encountered
+                // -----------
+                //
+                //printf("thread = %d\n", omp_get_thread_num());
+                //
+              }
+
+            } // end of #pragma omp parallel
+
+          } // end of loop over the number of vector sums to computer
           //
           // get the end time from the work
           // ------------------------------
@@ -116,15 +128,16 @@ Look for the second directive in the code for the for loop.
           return 0;
         }
 
-This is included in the file **vecadd_par.c**.
+This is included in the file **vecadd_omp.c**.
 
 ## Compiling Instructions:
 
 Type in the commands:
 
-1. A vanilla compilation with no opnemp api pieces included.
+1. A vanilla compilation with no opnemp api pieces included is obtained when the
+   following commands are used.
 
-        koebbe% gcc -o vecadd_vanilla vecadd_par.c
+        koebbe% gcc -o vecadd_vanilla vecadd_omp.c
         koebbe% ./vecadd_vanilla
 
    The output from this pair of commands is the following:
@@ -138,21 +151,8 @@ Type in the commands:
         thread = 0
         thread = 0
             *
+            *    <- this indicates a lot of outpout lines
             *
-            *
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
         thread = 0
         thread = 0
         thread = 0
@@ -172,10 +172,13 @@ Type in the commands:
 
 2. A compilation with opnemp api pieces included.
 
-        koebbe% gcc -fopenmp -o vecadd_omp vecadd_par.c
-        koebbe% ./vecadd_par.exe
+        koebbe% gcc -fopenmp -o vecadd_omp vecadd_omp.c
+        koebbe% ./vecadd_omp.exe
 
-   The output from this pair of commands is the following:
+   In testing the code for whether or not the threads are being used, the vector
+   size was set to 3. The output from this pair of commands is the following.
+   Notice the thread numbers are 0 through 2, one thread for each of the
+   components.
 
         Before going parallel
 
@@ -189,22 +192,14 @@ Type in the commands:
         thread = 0
         thread = 1
         thread = 2
-        thread = 0
-        thread = 1
         thread = 2
         thread = 0
         thread = 1
-        thread = 2
         thread = 0
         thread = 2
-        thread = 1
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
         thread = 1
             *
-            *
+            *    <- this indicates a lot of outpout lines
             *
         thread = 2
         thread = 0
@@ -234,7 +229,37 @@ Type in the commands:
 
         I am done with parallel for now.
 
-There are some important things to note about the code.
+3. The code without enabling OpenMP and **printf** statment results in the
+   following output for the non-omp case.
+
+        Before going parallel
+
+        i =    0,   x = 0,   y = -1,   z = -1,    
+        i =    1,   x = 1,   y = 1,   z = 2,    
+        i =    2,   x = 2,   y = -1,   z = 1,    
+        i = 99997,   x = 99997,   y = 1,   z = 99998,    
+        i = 99998,   x = 99998,   y = -1,   z = 99997,    
+        i = 99999,   x = 99999,   y = 1,   z = 100000,    
+
+        CPU Time Used:   2.500000e-01.
+
+        I am done with parallel for now.
+
+4. The code without the **printf** statment and with OpenMP enabled results in
+   the following output for
+
+        Before going parallel
+
+        i =    0,   x = 0,   y = -1,   z = -1,    
+        i =    1,   x = 1,   y = 1,   z = 2,    
+        i =    2,   x = 2,   y = -1,   z = 1,    
+        i = 99997,   x = 99997,   y = 1,   z = 99998,    
+        i = 99998,   x = 99998,   y = -1,   z = 99997,    
+        i = 99999,   x = 99999,   y = 1,   z = 100000,    
+
+        CPU Time Used:   1.421000e+00.
+
+        I am done with parallel for now.
 
 ## Comments on the Code:
 
@@ -247,11 +272,22 @@ meaningful output. The actual parallel region is actually very small.
 
 ## Assumptions:
 
-1. There is no need to compile the vanilla (sequential) version of the code is
-only necessary to show how variables are handled in a standard C code. 
-
-2. The **-fopenmp** includes the needed information to use bits and pieces of
+1. The **-fopenmp** includes the needed information to use bits and pieces of
    **omp.h**.
 
-3. Note that the output from running the executables in the above example are
-   different. Students should try additional examples.
+2. The worst result is the full run with OpenMP enabled. The reason for this is
+   the overhead for doing the work of setting up the threads and doing the very
+   simple computation of adding two numbers cannot be overcome in this code.
+
+3. The one thing we do know in this setting is that all of the threads are being
+   used when the code is run with OpenMP enabled.
+
+<hr>
+
+<a href="../version_2/README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../version_4/README.md"> Next </a>
+
+<hr>

@@ -9,9 +9,8 @@
   #include <omp.h>
 #else
   #define omp_get_thread_num() 0
-  #define omp_set_num_threads(n) 1
 #endif
-
+//
 int main(int argc, char *argv[])
 {
   printf("\nBefore going parallel\n\n");
@@ -23,6 +22,30 @@ int main(int argc, char *argv[])
   int x[n];
   int y[n];
   int z[n];
+
+//  omp_sched_t kind;
+//  int chunk_size;
+//omp_get_schedule(&kind, &chunk_size);
+//    printf("In case a runtime schedule is encountered, the ");
+//    switch(kind)
+//    {
+//        case omp_sched_static:
+//            printf("static");
+//            break;
+//        case omp_sched_dynamic:
+//            printf("dynamic");
+//            break;
+//        case omp_sched_guided:
+//            printf("guided");
+//            break;
+//        case omp_sched_auto:
+//            printf("auto");
+//            break;
+//        default:
+//            printf("other (implementation specific)");
+//            break;
+//    }
+//            printf(" chunk size = %d\n", chunk_size);
   //
   // time variables for performance issues
   // -------------------------------------
@@ -49,19 +72,23 @@ int main(int argc, char *argv[])
   // now, add-em
   // -----------
   //
-for(int k=0; k<1000; k++) {
+  for(int k=0; k<1000; k++) {
 
-omp_set_num_threads(4);
-#pragma omp parallel
-{
-  #pragma omp for
-  for(int i=0; i<n; i++)
-  {
-    z[i] = x[i] + y[i];
-  }
-}
+    #pragma omp parallel for schedule(static)
 
-}
+      for(int i=0; i<n; i++)
+      {
+        z[i] = x[i] + y[i];
+        //
+        // the next line prints out different thread numbers as they are
+        // encountered
+        // -----------
+        //
+        //printf("thread = %d\n", omp_get_thread_num());
+        //
+      }
+
+  } // end of loop over the number of vector sums to computer
   //
   // get the end time from the work
   // ------------------------------

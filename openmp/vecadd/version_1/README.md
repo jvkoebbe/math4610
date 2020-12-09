@@ -1,15 +1,10 @@
-# Example Description: Version 2.
+# Example Description: Version 1.
 
-In this example, we will look at parallelization of a loop. The operation
-involves the addition of two vectors that are large in the number of entries in
-the vector. This is a simple component-wise addition and does not require the
-use of any shared variables. The code uses the following directive inside a
-parallel region. This is
-
-        #pragma omp for
-
-There are no braces in this case since the directive is actually inside the
-parallel region in the code.
+In this example, the basic routine for adding two vectors is treated. The
+example is very simple, but will provide a baseline for computer timing of
+routines. In the rest of the examples, we will try to get more performance from
+the code using parallelism and compiler flags and directives. The choice in this
+set of examples is OpenMP.
 
 ## The Code for this Example:
 
@@ -17,26 +12,19 @@ Look for the second directive in the code for the for loop.
 
         #include <stdio.h>
         #include <stdlib.h>
+        //
+        // include the timing header file
+        // ------------------------------
+        //
         #include <time.h>
-        //
-        // the usual default stuff to compile in both sequential and parallel
-        // versions
-        // ---------
-        //
-        #ifdef _OPENMP
-          #include <omp.h>
-        #else
-          #define omp_get_thread_num() 0
-        #endif
 
         int main(int argc, char *argv[])
         {
-          printf("\nBefore going parallel\n\n");
           //
           // setup some storage for the vector addition
           // ------------------------------------------
           //
-          int n = 10;
+          int n = 100000;
           int x[n];
           int y[n];
           int z[n];
@@ -63,27 +51,20 @@ Look for the second directive in the code for the for loop.
           //
           start = clock();
           //
-          // now, add-em
-          // -----------
+          // to see any clock time, you need to run this a bunch of times
+          // ------------------------------------------------------------
           //
-        for(int k=0; k<1000; k++) {
-
-        #pragma omp parallel
-        {
-          #pragma omp for
-          for(int i=0; i<n; i++)
+          for(int k=0; k<10000; k++)
           {
-            z[i] = x[i] + y[i];
-        //
-        // the next line prints out different thread numbers as they are
-        // encountered
-        // -----------
-        //
-        printf("thread = %d\n", omp_get_thread_num());
+            //
+            // now, add-em
+            // -----------
+            //
+            for(int i=0; i<n; i++)
+            {
+              z[i] = x[i] + y[i];
+            }
           }
-        }
-
-        }
           //
           // get the end time from the work
           // ------------------------------
@@ -91,12 +72,12 @@ Look for the second directive in the code for the for loop.
           end = clock();
           cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
           //
-          // print out a few values at both ends
-          // -----------------------------------
+          // print out a few values at the beginning and end of the arrays
+          // -------------------------------------------------------------
           //
           for(int i=0; i<3; i++)
           {
-            printf("i =    %d,   x = %d,   y = %d,   z = %d,    \n", i, x[i], y[i], z[i]);
+            printf("i = %d,   x = %d,   y = %d,   z = %d,    \n", i, x[i], y[i], z[i]);
           }
           for(int i=n-3; i<n; i++)
           {
@@ -108,150 +89,64 @@ Look for the second directive in the code for the for loop.
           //
           printf("\nCPU Time Used:   %e.\n", cpu_time_used);
           //
-          // last message
-          // ------------
-          //
-          printf("\nI am done with parallel for now.\n\n");
+          // all done
+          // --------
           //
           return 0;
+          //
         }
 
-This is included in the file **vecadd_par.c**.
+This is included in the file **vecadd.c**.
 
 ## Compiling Instructions:
 
-Type in the commands:
+ The following is a vanilla compilation with no opnemp api pieces included.
 
-1. A vanilla compilation with no opnemp api pieces included.
-
-        koebbe% gcc -o vecadd_vanilla vecadd_par.c
-        koebbe% ./vecadd_vanilla
+        koebbe% gcc -o vecadd vecadd.c
+        koebbe% ./vecadd
 
    The output from this pair of commands is the following:
 
-        Before going parallel
-
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-            *
-            *
-            *
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        i =    0,   x = 0,   y = -1,   z = -1,    
-        i =    1,   x = 1,   y = 1,   z = 2,    
-        i =    2,   x = 2,   y = -1,   z = 1,    
         i = 0,   x = 0,   y = -1,   z = -1,    
         i = 1,   x = 1,   y = 1,   z = 2,    
         i = 2,   x = 2,   y = -1,   z = 1,    
+        i = 99997,   x = 99997,   y = 1,   z = 99998,    
+        i = 99998,   x = 99998,   y = -1,   z = 99997,    
+        i = 99999,   x = 99999,   y = 1,   z = 100000,    
 
-        CPU Time Used:   0.000000e+00.
-
-        I am done with parallel for now.
-
-2. A compilation with opnemp api pieces included.
-
-        koebbe% gcc -fopenmp -o vecadd_omp vecadd_par.c
-        koebbe% ./vecadd_par.exe
-
-   The output from this pair of commands is the following:
-
-        Before going parallel
-
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 1
-            *
-            *
-            *
-        thread = 2
-        thread = 0
-        thread = 2
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
-
-        i =    0,   x = 0,   y = -1,   z = -1,    
-        i =    1,   x = 1,   y = 1,   z = 2,    
-        i =    2,   x = 2,   y = -1,   z = 1,    
-        i = 0,   x = 0,   y = -1,   z = -1,    
-        i = 1,   x = 1,   y = 1,   z = 2,    
-        i = 2,   x = 2,   y = -1,   z = 1,    
-
-        CPU Time Used:   4.370000e-01.
-
-        I am done with parallel for now.
+        CPU Time Used:   2.687000e+00.
 
 There are some important things to note about the code.
 
 ## Comments on the Code:
 
-1. The threads are printed in this case to make sure the code is setting up the
-threads. In the vanilla case, there is only one thread and that is thread 0. The
-parallel code will actually use a total of three threads when n=3.
+1. The example of adding vectors is presented since it is easy and does not need
+   shared memory to produce a correct result. The input vectors are not changed
+   and each of the operations is independent.
 
-2. This code was included to make sure the two versions would run and produce
-meaningful output. The actual parallel region is actually very small.
+2. In the parallel version, each computation only involves the ith component.
+
+3. Note that the loop is repeated a large number of times. This is so that the
+   code will register some actual CPU time. If you run the loop, most newer
+   computers will run this so fast that it appears there is no time off the
+   clock.
+
+4. In many complex simulation codes, vector additions are done many, many times.
+   So, looping over the vector addition may mimic the time needed to run a
+   complicated simulation.
 
 ## Assumptions:
 
-1. There is no need to compile the vanilla (sequential) version of the code is
-only necessary to show how variables are handled in a standard C code. 
+1. There is no need to compile a parallel version of the code since the code
+   only involves sequential execution.. 
 
-2. The **-fopenmp** includes the needed information to use bits and pieces of
-   **omp.h**.
+<hr>
 
-3. Note that the output from running the executables in the above example are
-   different. Students should try additional examples.
+<a href="../README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../version_2/README.md"> Next </a>
+
+<hr>
+

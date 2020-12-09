@@ -1,15 +1,11 @@
 # Example Description: Version 2.
 
-In this example, we will look at parallelization of a loop. The operation
-involves the addition of two vectors that are large in the number of entries in
-the vector. This is a simple component-wise addition and does not require the
-use of any shared variables. The code uses the following directive inside a
-parallel region. This is
-
-        #pragma omp for
-
-There are no braces in this case since the directive is actually inside the
-parallel region in the code.
+As an extension of the basic routine for adding two vectors we will compile the
+same code using compiler optimization flags. Most compilers have flags for using
+the compiler to optimize the performance of a code. In **gcc** the flag to use
+is the **-O** flag on the command line. The actual commands are shown below. The
+actual code has not changed from the basic version and is repeated for
+completeness.
 
 ## The Code for this Example:
 
@@ -17,26 +13,19 @@ Look for the second directive in the code for the for loop.
 
         #include <stdio.h>
         #include <stdlib.h>
+        //
+        // include the timing header file
+        // ------------------------------
+        //
         #include <time.h>
-        //
-        // the usual default stuff to compile in both sequential and parallel
-        // versions
-        // ---------
-        //
-        #ifdef _OPENMP
-          #include <omp.h>
-        #else
-          #define omp_get_thread_num() 0
-        #endif
 
         int main(int argc, char *argv[])
         {
-          printf("\nBefore going parallel\n\n");
           //
           // setup some storage for the vector addition
           // ------------------------------------------
           //
-          int n = 10;
+          int n = 100000;
           int x[n];
           int y[n];
           int z[n];
@@ -63,27 +52,20 @@ Look for the second directive in the code for the for loop.
           //
           start = clock();
           //
-          // now, add-em
-          // -----------
+          // to see any clock time, you need to run this a bunch of times
+          // ------------------------------------------------------------
           //
-        for(int k=0; k<1000; k++) {
-
-        #pragma omp parallel
-        {
-          #pragma omp for
-          for(int i=0; i<n; i++)
+          for(int k=0; k<10000; k++)
           {
-            z[i] = x[i] + y[i];
-        //
-        // the next line prints out different thread numbers as they are
-        // encountered
-        // -----------
-        //
-        printf("thread = %d\n", omp_get_thread_num());
+            //
+            // now, add-em
+            // -----------
+            //
+            for(int i=0; i<n; i++)
+            {
+              z[i] = x[i] + y[i];
+            }
           }
-        }
-
-        }
           //
           // get the end time from the work
           // ------------------------------
@@ -91,12 +73,12 @@ Look for the second directive in the code for the for loop.
           end = clock();
           cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
           //
-          // print out a few values at both ends
-          // -----------------------------------
+          // print out a few values at the beginning and end of the arrays
+          // -------------------------------------------------------------
           //
           for(int i=0; i<3; i++)
           {
-            printf("i =    %d,   x = %d,   y = %d,   z = %d,    \n", i, x[i], y[i], z[i]);
+            printf("i = %d,   x = %d,   y = %d,   z = %d,    \n", i, x[i], y[i], z[i]);
           }
           for(int i=n-3; i<n; i++)
           {
@@ -108,150 +90,81 @@ Look for the second directive in the code for the for loop.
           //
           printf("\nCPU Time Used:   %e.\n", cpu_time_used);
           //
-          // last message
-          // ------------
-          //
-          printf("\nI am done with parallel for now.\n\n");
+          // all done
+          // --------
           //
           return 0;
+          //
         }
 
-This is included in the file **vecadd_par.c**.
+This is included in the file **vecadd_Ox.c**.
 
 ## Compiling Instructions:
 
-Type in the commands:
+ The following is a **-O1** compilation with no opnemp api pieces included.
 
-1. A vanilla compilation with no opnemp api pieces included.
-
-        koebbe% gcc -o vecadd_vanilla vecadd_par.c
-        koebbe% ./vecadd_vanilla
+        koebbe% gcc -O1 -o vecadd_O1 vecadd_Ox.c
+        koebbe% ./vecadd_O1
 
    The output from this pair of commands is the following:
 
-        Before going parallel
-
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-            *
-            *
-            *
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        thread = 0
-        i =    0,   x = 0,   y = -1,   z = -1,    
-        i =    1,   x = 1,   y = 1,   z = 2,    
-        i =    2,   x = 2,   y = -1,   z = 1,    
         i = 0,   x = 0,   y = -1,   z = -1,    
         i = 1,   x = 1,   y = 1,   z = 2,    
         i = 2,   x = 2,   y = -1,   z = 1,    
+        i = 99997,   x = 99997,   y = 1,   z = 99998,    
+        i = 99998,   x = 99998,   y = -1,   z = 99997,    
+        i = 99999,   x = 99999,   y = 1,   z = 100000,    
 
-        CPU Time Used:   0.000000e+00.
+        CPU Time Used:   6.090000e-01.
 
-        I am done with parallel for now.
+ Students should try:
 
-2. A compilation with opnemp api pieces included.
+        koebbe% gcc -O2 -o vecadd_O2 vecadd_Ox.c
+        koebbe% ./vecadd_O2
 
-        koebbe% gcc -fopenmp -o vecadd_omp vecadd_par.c
-        koebbe% ./vecadd_par.exe
+ and
 
-   The output from this pair of commands is the following:
+        koebbe% gcc -O3 -o vecadd_O3 vecadd_Ox.c
+        koebbe% ./vecadd_O2
 
-        Before going parallel
+ to see if there is any benefit to including these flags. In an informal test of
+ these codes, it appears that as the level increases the CPU time is reduced.
 
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 1
-            *
-            *
-            *
-        thread = 2
-        thread = 0
-        thread = 2
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 2
-        thread = 1
-        thread = 0
-        thread = 1
-        thread = 2
-        thread = 0
+ For more on available optimization flags click on the following link:
 
-        i =    0,   x = 0,   y = -1,   z = -1,    
-        i =    1,   x = 1,   y = 1,   z = 2,    
-        i =    2,   x = 2,   y = -1,   z = 1,    
-        i = 0,   x = 0,   y = -1,   z = -1,    
-        i = 1,   x = 1,   y = 1,   z = 2,    
-        i = 2,   x = 2,   y = -1,   z = 1,    
-
-        CPU Time Used:   4.370000e-01.
-
-        I am done with parallel for now.
+[gcc optimization documentation](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html)
 
 There are some important things to note about the code.
 
 ## Comments on the Code:
 
-1. The threads are printed in this case to make sure the code is setting up the
-threads. In the vanilla case, there is only one thread and that is thread 0. The
-parallel code will actually use a total of three threads when n=3.
+1. You can choose different levels for the O-flag. These start with **-O1** as
+   the level of optimization.
 
-2. This code was included to make sure the two versions would run and produce
-meaningful output. The actual parallel region is actually very small.
+2. You can choose levels of 1, 2, or 3. Each of these provides a higher level of
+   optimization as the value increases.
+
+3. These optimizations are done independently of any OpenMP API information.
+
+4. Be careful with this optimization. In some cases, the optimization will not
+   provide correct results.
+
+5. Another issue with the **-Ox** flag is that the compiler will try to
+   optimize the entire code. OpenMP allows the user to target optimization in
+   a code.
 
 ## Assumptions:
 
-1. There is no need to compile the vanilla (sequential) version of the code is
-only necessary to show how variables are handled in a standard C code. 
+1. It is assumed that we will need to time the code. So, the **time.h** header
+   is included in the file so that the **clock()** can be used to estimate the
+   CPU time used to execute the code.
 
-2. The **-fopenmp** includes the needed information to use bits and pieces of
-   **omp.h**.
+<hr>
 
-3. Note that the output from running the executables in the above example are
-   different. Students should try additional examples.
+<a href="../version_1/README.md"> Previous </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../README.md"> Table of Contents  </a>
+  &nbsp;&nbsp; | &nbsp;&nbsp;
+<a href="../version_3/README.md"> Next </a>
+
+<hr>

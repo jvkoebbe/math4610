@@ -11,6 +11,7 @@ translated into other languages with a bit of work.
   | **Hello World Example.** | [link](../../helloWorld/README.md) |
   | **Memory Model Exmples** | [link](../../memory_model/README.md) |
   | **Vector Addition Examples** | [link](../../vecadd/README.md) |
+  | **Dot Product Examples** | [link](../../dotprd/README.md) |
 
 Using git, completed task sheets will be pulled to the instructors computer for
 grading. This means a pull request will be made for the contents in the

@@ -1,20 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
+//
+// include the timing header file
+// ------------------------------
+//
 #include <time.h>
-//
-// the usual default stuff to compile in both sequential and parallel versions
-// ---------------------------------------------------------------------------
-//
-#ifdef _OPENMP
-  #include <omp.h>
-#else
-  #define omp_get_thread_num() 0
-  #define omp_set_num_threads(n) 1
-#endif
 
 int main(int argc, char *argv[])
 {
-  printf("\nBefore going parallel\n\n");
   //
   // setup some storage for the vector addition
   // ------------------------------------------
@@ -23,7 +16,6 @@ int main(int argc, char *argv[])
   int x[n];
   int y[n];
   int z[n];
-  int k;
   //
   // time variables for performance issues
   // -------------------------------------
@@ -47,19 +39,20 @@ int main(int argc, char *argv[])
   //
   start = clock();
   //
-  // now, add-em
-  // -----------
+  // to see any clock time, you need to run this a bunch of times
+  // ------------------------------------------------------------
   //
-omp_set_num_threads(10);
-for(int k=0; k<1000; k++) {
-
-#pragma omp for schedule(static)
-  for(int i=0; i<n; i++)
+  for(int k=0; k<10000; k++)
   {
-    z[i] = x[i] + y[i];
+    //
+    // now, add-em
+    // -----------
+    //
+    for(int i=0; i<n; i++)
+    {
+      z[i] = x[i] + y[i];
+    }
   }
-
-}
   //
   // get the end time from the work
   // ------------------------------
@@ -67,12 +60,12 @@ for(int k=0; k<1000; k++) {
   end = clock();
   cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
   //
-  // print out a few values at both ends
-  // -----------------------------------
+  // print out a few values at the beginning and end of the arrays
+  // -------------------------------------------------------------
   //
   for(int i=0; i<3; i++)
   {
-    printf("i =    %d,   x = %d,   y = %d,   z = %d,    \n", i, x[i], y[i], z[i]);
+    printf("i = %d,   x = %d,   y = %d,   z = %d,    \n", i, x[i], y[i], z[i]);
   }
   for(int i=n-3; i<n; i++)
   {
@@ -84,10 +77,9 @@ for(int k=0; k<1000; k++) {
   //
   printf("\nCPU Time Used:   %e.\n", cpu_time_used);
   //
-  // last message
-  // ------------
-  //
-  printf("\nI am done with parallel for now.\n\n");
+  // all done
+  // --------
   //
   return 0;
+  //
 }

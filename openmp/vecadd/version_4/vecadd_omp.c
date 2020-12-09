@@ -10,7 +10,7 @@
 #else
   #define omp_get_thread_num() 0
 #endif
-
+//
 int main(int argc, char *argv[])
 {
   printf("\nBefore going parallel\n\n");
@@ -43,23 +43,35 @@ int main(int argc, char *argv[])
   // get the start time
   // ------------------
   //
+  int nchunks = n / 10;
   start = clock();
   //
   // now, add-em
   // -----------
   //
-for(int k=0; k<1000; k++) {
+  for(int k=0; k<100000; k++) {
+    //
+    // this line is a directive that will parallelize the loop for us - the
+    // default is to use a dynamic schedule with chunk size 1. static means the
+    // loop is divided into equal size chunks and each does its share of the
+    // loop
+    // ----
+    //
+    #pragma omp parallel for schedule(static, nchunks) num_threads(10)
 
-#pragma omp parallel
-{
-  #pragma omp for
-  for(int i=0; i<n; i++)
-  {
-    z[i] = x[i] + y[i];
-  }
-}
+      for(int i=0; i<n; i++)
+      {
+        z[i] = x[i] + y[i];
+        //
+        // the next line prints out different thread numbers as they are
+        // encountered
+        // -----------
+        //
+        //printf("thread = %d\n", omp_get_thread_num());
+        //
+      }
 
-}
+  } // end of loop over the number of vector sums to computer
   //
   // get the end time from the work
   // ------------------------------
