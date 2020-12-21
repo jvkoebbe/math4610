@@ -35,7 +35,7 @@ The following link gives access to the content of Math 4610 including the
 syllabus, a table of contents to the lectures in the course, and other class
 materials.
 
-[Quick Links](./quickLinks.md)
+[Quick Links](./quicklinks/README.md)
 
 ## Course Syllabus
 
@@ -179,3 +179,11 @@ file for use by students in Math 4610.
 
 You can download the file above for your own use using the save as feature on
 any web browser out there.
+
+<hr>
+
+Previous |
+[Top of Page](./README.md) |
+[Next](./quicklinks/README.md)
+
+<hr>

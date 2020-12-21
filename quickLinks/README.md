@@ -6,21 +6,21 @@ computational mathematics.
 
 ## Quick Links to Math 4610 Content:
 
-* [Math 4610 Home](./README.md)
+* [Math 4610 Home](../README.md)
 
-* [Math 4610 Syllabus](./syllabus/md/syllabus.md)
+* [Math 4610 Syllabus](../syllabus/README.md)
 
-* [Math 4610 Lectures](./lectures/toc/md/topic_toc.md)
+* [Math 4610 Lecture Topics](../lectures/toc/md/topic_toc.md)
 
-* [Math 4610 Homework/Tasks](./tasksheets/toc/md/tasksheet_toc.md)
+* [Math 4610 Homework/Tasks](../tasksheets/toc/md/tasksheet_toc.md)
 
-* [Math 4610 OpenMP Examples](./openmp/toc/md/openmp_toc.md)
+* [Math 4610 OpenMP Examples](../openmp/toc/md/openmp_toc.md)
 
-* [Math 4610 Project Descriptions](./projects/indexOfProjects.md)
+* [Math 4610 Project Descriptions](../projects/indexOfProjects.md)
 
 ## Review Materials:
 
-* [Basic Algebra Content Review](./basicReview/algebra.html)
+* [Basic Algebra Content Review](../basicReview/algebra.html)
 
 ## Other Links:
 
@@ -37,3 +37,13 @@ computational mathematics.
 ## Links to Other Course Materials:
 
 * [Math 5610 Computational Linear Algebra Repositry](https://jvkoebbe.github.io/math5610)
+
+* [Math 5620 Approximate Solution of Differential Equations](https://jvkoebbe.github.io/math5620)
+
+<hr>
+
+[Previous](../README.md) |
+[Table of Contents](./README.md) |
+[Next](../syllabus/README.md)
+
+<hr>
