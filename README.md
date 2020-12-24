@@ -2,19 +2,19 @@
 
 ## Welcome
 
-This site provides links to materials used in teaching a single one semester
-course in the Department of Mathematics and Statistics at Utah State University
-(USU). The course, Math 4610 Fundamentals of Numerical Analysis is a course for
-computational mathematicians, computer scientists, engineers, and some business
-majors - for example economics majors. The course is intended to give students
-in computational areas a starting point for implementation of algorithms,
-development of reusable computer codes, and information on how to get started
-with parallel computing platform (e.g, multicore programming, graphics
-processing units, threads in Java, and other topics.
+This site provides links to materials used in teaching a one semester course in
+the Department of Mathematics and Statistics at Utah State University (USU). The
+course, Math 4610 Fundamentals of Numerical Analysis, is intended for students
+in computational mathematics, computer science, engineering, and some majors in
+business (e.g, example economics majors). The course is intended to give
+students in computational areas a starting point for implementation of
+algorithms, development of reusable computer codes, and information on how to
+get started with parallel computing platforms (e.g, multicore programming,
+graphics processing units, threads in Java, and other topics.
 
 ## Development of Math 4610
 
-This course was developed by [Joe Koebbe](http://www.math.usu.edu/~koebbe) at
+This course is being developed by [Joe Koebbe](https://github.com/jvkoebbe/) at
 [Utah State University](http://www.usu.edu) in the [Department of Mathematics
 and Statistics](http://www.math.usu.edu/). The course is intended for students
 in the [College of Science](https://www.usu.edu/science), the
@@ -27,22 +27,23 @@ presents computational methods for the approximate solution of a number of
 mathematical problems. The amount of analysis needed is minimal (e.g, Taylor
 series and knowledge of results from Linear Algebra). The goal is to introduce
 students into the world of computer coding and simulation. Later courses (e.g,
-Math 5610 and Math 6610) treat analysis of the methods at a more advanced level.
+Math 5610 and Math 6610) are used to treat analysis of the methods at a more
+advanced level.
 
 ## Quick Links to Content for the Course
 
-The following link gives access to the content of Math 4610 including the
-syllabus, a table of contents to the lectures in the course, and other class
-materials.
+The following link gives access to the content of Math 4610 including an example
+syllabus, a table of contents to the topics used in the lectures in the course,
+and other class materials.
 
 [Quick Links](./quicklinks/README.md)
 
 ## Course Syllabus
 
-[Course Syllabus](./syllabus/pdf/embed_syllabus.md):
-This link provides access to a pdf file that contains a current of the syllabus
-for the course as taught at Utah State University. This should give the reader
-some idea of how the materials are covered at USU.
+[Course Syllabus](./syllabus/pdf/embed_syllabus.md): This link provides access
+to a pdf file that contains a current example of the syllabus for the course as
+taught at Utah State University. This should give the reader some idea of how
+the materials are covered at USU.
 
 ## Introduction to the Course
 
@@ -61,24 +62,24 @@ Each of the items just listed is viewed as an important part of being a
 computational mathematics/scientific computing expert. There are also real
 reasons why it is important that students are well prepared in each of these
 skill sets. It is ultimately important that any student in this course is able
-to implement simple algorithms in a native coding language (say C or Java). 
-There are some in these areas that would say that implementation of algorithms
-using a computational platform like Matlab is a better way to teach algorithm
-implementation. However, if a student is hired into a software development
-company or a position within a large company to write software, Matlab is
-usually too expensive to use. In an academic setting Matlab is usually a great
-way to prototype ideas. The built in functionality and graphical interfaces are
-great for testing ideas in many areas of mathematics and science. However,
-incorporating Matlab and any other of these platforms requires a larger
-financial commitment. More importantly, computational mathematicians are
-constantly faced with problems where it is important to be able to debug and
-write new code that modifies an existing piece of software. For example, it
-might be important to rewrite code to work on multiple cores on a desktop. This
-may mean digging into existing code and rewriting the code. This is a skill set
-that all computational mathematics professionals must have. Using simple
-algorithms as a means to present these ideas is the best approach.
+to implement simple algorithms in a native coding language (say C) or
+interpreted language (say, Java). There are some in these areas that would say
+that implementation of algorithms using a computational platform like Matlab is
+a better way to teach algorithm implementation. However, if a student is hired
+into a software development company or a position within a large company to
+write software, Matlab is usually too expensive to use. In an academic setting
+Matlab is usually a great way to prototype ideas. The built in functionality and
+graphical interfaces are great for testing ideas in many areas of mathematics
+and science. However, incorporating Matlab and any other of these platforms
+requires a larger financial commitment. More importantly, computational
+mathematicians are constantly faced with problems where it is important to be
+able to debug and write new code that modifies an existing piece of software.
+For example, it might be important to rewrite code to work on multiple cores on
+a desktop. This may mean digging into existing code and rewriting the code. This
+is a skill set that all computational mathematics professionals must have. Using
+simple algorithms as a means to present these ideas is the best approach.
 
-The basic mathematical techniques from calculus and for that matter any other
+The basic mathematical techniques from calculus and for that matter, any other
 area of mathematics, is important in determining the range of problems to which
 an approximate solution technique can be applied. Knowing the limitations of
 various methods applied to classes of problems is invaluable. For example, it
@@ -89,13 +90,13 @@ important to know which methods will perform the best in terms of accuracy of
 the approximation that is produced and the amount of computational effort needed
 by these methods.
 
-The third point is an important skill set in terms of how many codes and
-packages are implemented. This is a minor point in the course, but helps
-students understand how reusable code can be created in the implementation of
-algorithms. For example, if one code for the solution of nonlinear scalar
-equations can be used, a computational mathematician should be able to write
-code that can be used to solve a variety of these types of problems. Embedding
-a new version of an algorithm in each new application code written is
+The third point to consider involves an important skill set in terms of how many
+codes and packages are implemented. This is a minor point in the course, but
+helps students understand how reusable code can be created in the implementation
+of basic algorithms. For example, if one code for the solution of nonlinear
+scalar equations can be used, a computational mathematician should be able to
+write code that can be used to solve a variety of these types of problems.
+Embedding a new version of an algorithm in each new application code written is
 incredibly inefficient. In most high level languages from C and Fortran and
 including Python and Java there are tools for creating these packages and
 libraries. Calling routines from a shared library slows down the execution of
@@ -152,10 +153,10 @@ of content in the course.
 
 ## Table of Contents
 
-[Course Contents](./lectures/toc/md/topic_toc.md): The previous link will take
-you to a Markdown (.md) file that contains a the table of contents for the
-course. For a one semester course, there may be more content than can be
-covered. The content can be used to give instructors/readers plenty to do.
+[Course Contents](./lectures/toc/md/topic_toc.md): This link will take you to a
+Markdown (.md) file that contains a the table of contents for the course. For a
+one semester course, there may be more content than can be covered. The content
+can be used to give instructors/readers plenty to do.
 
 ## Software Manual Description and Template
 
@@ -172,7 +173,7 @@ to build all routines including routines to compute errors, do basic linear
 algebra operations, and other basic routines that are needed in support of the
 main algorithms presented in the course.
 
-The links below will take you to a software manual template in in a Markdown
+The following link will take you to a software manual template in in a Markdown
 file for use by students in Math 4610.
 
 [Software Manual Template](softwareManual/softwareManualTemplate.md)
