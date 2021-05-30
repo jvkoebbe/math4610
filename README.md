@@ -185,6 +185,6 @@ any web browser out there.
 
 Previous |
 [Top of Page](./README.md) |
-[Next](./quicklinks/README.md)
+[Next](./quickLinks/README.md)
 
 <hr>
