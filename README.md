@@ -36,7 +36,7 @@ The following link gives access to the content of Math 4610 including an example
 syllabus, a table of contents to the topics used in the lectures in the course,
 and other class materials.
 
-[Quick Links](./quicklinks/README.md)
+[Quick Links](./quickLinks/README.md)
 
 ## Course Syllabus
 
