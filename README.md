@@ -12,6 +12,8 @@ algorithms, development of reusable computer codes, and information on how to
 get started with parallel computing platforms (e.g, multicore programming,
 graphics processing units, threads in Java, and other topics.
 
+Just a test
+
 ## Development of Math 4610
 
 This course is being developed by [Joe Koebbe](https://github.com/jvkoebbe/) at
