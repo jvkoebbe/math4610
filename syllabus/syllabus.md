@@ -58,13 +58,13 @@ If you have not completed a computer programming class, for example USU courses 
 
 <hr>
 
-There is no required textbook for Math 4610. Instead the course materials will be posted on Canvas through our USU license or on Github in a repository dedicated to Math 4610 (more on this later). Readings used in class that are  found on the internet will have links or pdf files posted to Canvas or Github as needed. The Github site for the course is:
+There is no required textbook for Math 4610. Instead the course materials will be posted on Canvas through our USU license or on Github in a repository dedicated to Math 4610 (more on git and Github later). Readings used in class that are  found on the internet will have links or pdf files posted to Canvas or Github as needed. The Github site for the course is:
 
 > [Math 4610 Github Link](https://jvkoebbe.github.io/math4610)
 
 A few remarks:
 
-1. Note that many students already have a Github account and have worked with git. If you have, you will still need to create a repository for some of your work required for successful completion of the course. You will be asked to create a repository named "math4610" in one of the first assignments. Note that git and Github are case sensitive animals. So, make the name match exactly.
+1. Note that many students already have a Github account and have worked with git. If you have, you will still need to create a repository for some of your work required for successful completion of the course. You will be asked to create a repository named "[math4610](https://www.github.com/jvkoebbe/math4610/)" in one of the first assignments. Note that git and Github are case sensitive animals. So, make the name match exactly without quotation marks. Try clicking on the name above in quotes.
 2. The materials at the link above are governed by a Creative Commons License. This license allows free use of the materials for non-commercial purposes. This includes any derivative works from the materials on the site given above or posted on Canvas.
 
 <hr>
@@ -87,14 +87,14 @@ Note that this syllabus is posted on the instructor's github site with the link 
 
 There are a number of computer skills that students may or may not have. As mentioned above, students must be able to write programs in text form, compile the code into an executable form using a compiler, and then run the executable to compute solutions to mathematical problems. Here are a few computer skills that will be presented/used in the class:
 
-1. instantiation of command terminals in multiple forms,
+1. instantiation of command terminals in multiple forms, e.g. Cygwin and GitBash,
 2. execution of commands in commands terminals,
 3. writing programs in high level languages, such as, python, java, c, c++, fortran, and a number of additional languages,
 4. scripting in shells like sh, bash, csh, tcsh, and ksh,
 5. developing graphical output using packages such as matplotlib.py or matlab,
 6. implementation of parallel algorithms on high performance computing hardware such as multicore and gpu systems.
 
-These are skill sets that will be presented and reviewed as a part of the course.
+These are skill sets that will be presented and reviewed as a part of the course. Note that the list above is no where near exhaustive. The course will wander through topics as needed. For example, Integrated Development Environments, (IDE(s)) such as IDLE and VSCode by Microsoft. Both of these are free to install and use.
 
 <hr>
 
@@ -120,10 +120,10 @@ If you have any questions about the course material, course policies, or any oth
 
 The  following list of policies will be used for this course.During the semester, students will be required to use a few more computational tools to complete work. These include, but are not limited to the following list:
 
-1. Command Line Terminals Students will be required to use Linux/Unix terminals to complete many tasks. Basic usage will be covered in class. Note that there are many ways to access command terminals on your laptops and desktops.
-2. git: Students will need to master the use of “ git” as a part of the class. Note that git is automatically installed with products like Cygwin and Git Bash.
-3. Github Account: Students must be able to create a Github account to interface work in the class with a publicly available repository. This will be covered in class.
-4. Graphical Output: Students must be able to produce graphs and and other visual aids for home work tasks. This will be covered in class. In class, the Python package matplotlib.py will be used to create graphical output. Students can use this package or other readily available shareware to create plots. This is one place where Matlab can be used in the course. Matlab has a lot of nice graphical tools for visualization.
+1. **Command Line Terminals:** Students will be required to use Linux/Unix terminals to complete many tasks. Basic usage will be covered in class. Note that there are many ways to access command terminals on your laptops and desktops.
+2. **git:** Students will need to master the use of “ git” as a part of the class. Note that git is automatically installed with products like Cygwin and Git Bash.
+3. **Github Account:** Students must be able to create a Github account to interface work in the class with a publicly available repository. This will be covered in class.
+4. **Graphical Output:** Students must be able to produce graphs and and other visual aids for home work tasks. This will be covered in class. In class, the Python package matplotlib.py will be used to create graphical output. Students can use this package or other readily available shareware to create plots. This is one place where Matlab can be used in the course. Matlab has a lot of nice graphical tools for visualization.
 
 <hr>
 
@@ -147,9 +147,9 @@ Your grade in the course will be determined by the following:
 
 1. Each student is required to meet with the instructor in the instructor's office during the first week of the semester and prior to each of the exams described below during posted office hours or by making an appointment. This will count as one homework assignment for each visit. You can view this as a course participation assignment. You will be required to do this 3 times during the semester.
 2. Homework will account for a 35% of a student's grade. Homework must be turned in on time via Canvas. Under normal conditions late homework will not be accepted. If you must be gone, any homework must be turned in on or before the due date. The only exception to this rule is for a family emergency. Also, homework must be legible. Some of your work will be done using "git" and made available for grading using Canvas. This will mean that most of your homework will be typed. There will be times when a scanned, handwritten solution will be appropriate. Make sure these solutions are legible and the scan of the work is readable.
-3. Students must effectively communicate the work done on homework assignments. This means writing out full explanations. You will be graded on your technical writing skills. Students must use complete sentences, proper grammar, and in general, well structured paragraphs. It may pay to write out an outline for the solutions of problems and then fill in the details. We will work through one or two examples in class. If you do not take the time to write up the work you are doing, your grade will suffer accordingly.
+3. Students must effectively communicate the work done on homework assignments. This means writing out full explanations for your solutions. An answer like, $$\pi$$ or $$42$$ will not be sufficient to receive full credit. You will be graded on your technical writing skills as well as your computational skills. Students must use complete sentences, proper grammar, and in general, well structured paragraphs. It may pay to write out an outline for the solutions of problems and then fill in the details. We will work through one or two examples in class. If you do not take the time to write up the work you are doing, your grade will suffer accordingly.
 4. Students will be required to create a software manual to document the algorithms developed during the semester. This will account for 15% of the overall grade in the course. The software manual will be comprised of short descriptions of the algorithms developed and implemented in this class. For each piece of code that is developed in the class there must be an entry in your software manual. We will discuss this in some detail during the first week of the semester. In newer jargon, you can think of the software manual as an Application Program Interface (API) if you like. A specific format will be expected for the entries in your software manual. A template will be provided by your instructor.
-5. Two midterms will be given. Each will cover about one half of the content of the course. Each of these midterms will account for 25% or 50% of the grade earned in the course.
+5. Two midterms will be given. Each will cover about one half of the content of the course. Each of these midterms will account for 25% or 50% (total) of the grade earned in the course.
 
 If students have questions about assignments, the software manual, and/or midterms please contact your instructor. One of the assignments will be to meet with your instructor at least thrice during the semester. Any concerns about the course can be expressed at these meetings.
 
@@ -163,7 +163,7 @@ The two exams will be given on the following dates.
 
 **Exam I:** Friday, October 20, 2023, during class
 
-**Exam II:** Wednesday, December 13, 2023, 9:30am-11:20am
+**Exam II:** Wednesday, December 13, 2023, 9:30am-11:20am (time scheduled for the final)
 
 <hr>
 
