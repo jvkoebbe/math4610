@@ -161,7 +161,7 @@ If students have questions about assignments, the software manual, and/or midter
 
 The two exams will be given on the following dates.
 
-**Exam I:** Friday, October 20, 2023, during class
+**Exam I:** Friday, October 18, 2023, during class
 
 **Exam II:** Wednesday, December 13, 2023, 9:30am-11:20am (time scheduled for the final)
 
