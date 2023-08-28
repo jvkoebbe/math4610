@@ -1,8 +1,12 @@
 Math 4610: Table of Contents:
 <hr>
 
-* Lecture 1
-  * [Syllabus for the Course](./syllabus/syllabus.md)
+* Lecture Materials: Day 1
   * [A Short Tuturial on Github](https://github.com)
+  * [Syllabus for the Course](./syllabus/syllabus.md)
+  * [Hardware Virtualization](./FCM_Modules/virtualization.md)
+  * [How to Build a Virtual Machine (VM)](./FCM_Modules/virtual_machines.md)
+* Lecture Materials: Day 2
+  * 
 
 <hr>
