@@ -1,0 +1,940 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width initial-scale=1">
+<title>virtualization.md</title>
+<style type="text/css">
+.content {
+  padding: 84px 80px
+}
+</style>
+<style type="text/css">
+.content {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px; /* 700px is the width of the post in Medium */
+}
+
+/* hide TOC(table of contents). it's height is calculated from the original container */
+.content--buffer .table-of-contents {
+  height: 0;
+}
+
+.content > :first-child,
+.content > :first-child > * /* nested blocks */ {
+  margin-top: 0;
+}
+
+.content > :last-child,
+.content > :last-child > * /* nested blocks */ {
+  margin-bottom: 0;
+}
+
+.mermaid {
+  margin-bottom: 24px;
+}
+
+.page-break {
+  page-break-before: always;
+}
+
+@media print {
+  /* fix | code blocks in PDF export are trimmed */
+  .content pre {
+    white-space: pre-wrap;
+  }
+}
+</style>
+<style type="text/css">
+
+
+
+/*
+ * Read-only
+ *
+ * To add a theme:
+ *   1. Add a .css file to the same folder.
+ *   2. Restart the app.
+ *
+ * Taken from https://github.com/sindresorhus/github-markdown-css */
+
+
+
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+:root {
+  background: #fff;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.content {
+  max-width: 890px;
+}
+
+.katex-display {
+  padding: 0.6rem 0;
+  overflow-x: auto;
+}
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+strong {
+  font-weight: inherit;
+}
+
+strong {
+  font-weight: bolder;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+img {
+  border-style: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+code,
+kbd,
+.content > pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+input {
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  overflow: visible;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+hr::before {
+  display: table;
+  content: "";
+}
+
+hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 21px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+h5 {
+  font-size: 12px;
+}
+
+h6 {
+  font-size: 11px;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-roman;
+}
+
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+dd {
+  margin-left: 0;
+}
+
+code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.content > pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.pl-1 {
+  padding-left: 3px !important;
+}
+
+.pl-2 {
+  padding-left: 6px !important;
+}
+
+.pl-3 {
+  padding-left: 12px !important;
+}
+
+.pl-4 {
+  padding-left: 24px !important;
+}
+
+.pl-5 {
+  padding-left: 36px !important;
+}
+
+.pl-6 {
+  padding-left: 48px !important;
+}
+
+.form-select::-ms-expand {
+  opacity: 0;
+}
+
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.anchor {
+  display: inline-block;
+  padding-right: 2px;
+  margin-left: -18px;
+}
+
+.anchor:focus {
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+  color: #000;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+  text-decoration: none;
+}
+
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+h1 .anchor {
+  line-height: 1;
+}
+
+h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+h2 .anchor {
+  line-height: 1;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+h3 .anchor {
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h4 .anchor {
+  line-height: 1.2;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h5 .anchor {
+  line-height: 1.1;
+}
+
+h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+h6 .anchor {
+  line-height: 1.1;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+.content > pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+ul,
+ol {
+  padding-left: 2em;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+li>p {
+  margin-top: 16px;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+blockquote>:first-child {
+  margin-top: 0;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+table th {
+  font-weight: bold;
+}
+
+table th,
+table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+code:before,
+code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.highlight {
+  margin-bottom: 16px;
+}
+
+.highlight pre,
+.content > pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.content > pre {
+  word-wrap: normal;
+}
+
+pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+pre code:before,
+pre code:after {
+  content: normal;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.pl-c {
+  color: #969896;
+}
+
+.pl-c1,
+.pl-s .pl-v {
+  color: #0086b3;
+}
+
+.pl-e,
+.pl-en {
+  color: #795da3;
+}
+
+.pl-s .pl-s1,
+.pl-smi {
+  color: #333;
+}
+
+.pl-ent {
+  color: #63a35c;
+}
+
+.pl-k {
+  color: #a71d5d;
+}
+
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+  color: #183691;
+}
+
+.pl-v {
+  color: #ed6a43;
+}
+
+.pl-id {
+  color: #b52a1d;
+}
+
+.pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+.pl-ml {
+  color: #693a17;
+}
+
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+.pl-mq {
+  color: #008080;
+}
+
+.pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+.pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+.pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+.pl-mo {
+  color: #1d3e81;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.full-commit .btn-outline:not(:disabled):hover {
+  color: #4078c0;
+  border: 1px solid #4078c0;
+}
+
+:checked+.radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #4078c0;
+}
+
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
+.task-list-item {
+  list-style-type: none;
+}
+
+.task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+hr {
+  border-bottom-color: #eee;
+}
+
+/* Code
+   ---------------- */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #aaa;
+}
+
+.token.operator,
+.token.punctuation {
+  color: #888;
+}
+
+.token.selector,
+.token.attr-name,
+.token.entity,
+.token.url {
+  color: #987;
+}
+
+.token.tag,
+.token.constant,
+.token.keyword {
+  color: #a7a;
+}
+
+.token.function,
+.token.attr-value {
+  color: #68a;
+}
+
+.token.number,
+.token.boolean,
+.token.regex,
+.token.string {
+  color: #6a8;
+}
+
+.token.variable,
+.token.property,
+.token.key {
+  color: #a66;
+}
+
+</style>
+</head>
+<body>
+<h2 id="hardware-virtualization-in-scientific-computing">Hardware Virtualization in Scientific Computing</h2>
+<p>Virtualization is a technology, in the form of software, used to set up simulated virtual versions of computer hardware/resources on top of an existing physical computer. This may include emulation of operating systems, memory, storage, CPUs and so on. The end product of applying virtualization is a standalone virtual computer or multiple  virtual computers all running on a single physical computer or server. Each of these machines can run asynchronously relative to the physical computer and any other virtual computers that have been deployed. To generate multiple virtual computers, the resources on a single physical computer are divided amongst the given number of virtual machines and the host computer in a way that allows all of the machines to do some amount of work independently.</p>
+<p>Real world problems have become more complicated over the past several decades.
+Simulation of physical processes like weather, ocean current, and orbits of all kinds of cosmic masses are always in need of more computational resources. The computer hardware to solve the resulting mathematical problems necessarily must increase along with the size of the problem. Most software developers do not have direct access to massive physical hardware resources needed to provide adequate solutions. However a programmer can buy or rent access to resources through companies like Amazon and VMware. For the material in this course, we will only need to generate one or two virtual machines to complete our tasks. By the end of the course, students will be able to work with resources like AWS and VMware with ease. Note that computational resources through AWS or VMware will cost you a bit of money.  Students will not need to purchase or rent time. Instead, we will use free software to generate virtual machines.</p>
+<p>In the lesson on <a href="../FCM_VIRTUAL_MACHINE/">Virtual Machines</a> , we will see one such product. We will use VirtualBox from Oracle - more on this in the near future. VirtualBox is a free piece of software provided by <a href="www.oracle.com">Oracle</a>. There are a couple of things we will need to do before moving on to the instantiation of a VM.</p>
+<p>Before we actually do anything too crazy, some of the features of virtualization are described.</p>
+<p><strong>All the features any developer wants:</strong></p>
+<ol>
+<li>You do not need to be in the same location as the physical hardware you are using.</li>
+<li>Virtualization abstracts the physical hardware functionality into software that can be run anywhere there is an internet hook-up.</li>
+<li>If hardware is purchased to handle different tasks and the hardware is under utilized, the maintenance costs maybe too burdensome. If virtualization is used, one server can be used to replace a number of servers. The work can be distributed on virtual resources.</li>
+<li>If virtualization is used, any number of physical machines and configurations can be managed through a single physical server or time can be purchased on hardware at a remote site and/or from a company that does the physical maintenance.</li>
+<li>Think of developing software that needs to read in data in one stream, processing the data on another machine, and graphically displaying results on another computer. We can choose a configuration for each of the pieces and then use a single source for the hardware - on the internet or on a local server for less cost.</li>
+<li>Using virtualization allows for more robust testing of software. If software is failing and causing problems with a computer, virtualization avoids the catastrophic failure of your computer. The virtual version of the computer resources can be deleted at no cost to the physical hardware.</li>
+<li>Buy time on cloud computing and allow the vendor (AWS or Google) to maintain and purchase the physical hardware.</li>
+<li>The use of multiple physical servers involves using more electricity than a single server. This gives developers the opportunity to optimize energy costs by efficiently using all hardware resources.</li>
+<li>Increasing the size of the memory becomes a lot easier and the size of problems that can be solved on virtualized resources.</li>
+<li>Kernel-based Virtual Machines provide digitally separated environments switch between available OS's without any rebooting necessary.</li>
+<li>A VM is a software-defined computer. So it is easy to activate the computer or copies and clones of the computer  we want to use.</li>
+<li>You  can create deployment and configuration programs to define a template VM. All of the VMs generated are the same/consistent and easier to maintain.</li>
+<li>Recovery from natural disaster and cyberattacks is quick and easy.</li>
+<li>On the end-user side of things, business consistency and resiliency are easier to maintain.</li>
+<li>Install apps and software packages on as desired without affecting the rest of your users/developers.</li>
+<li>Server virtualization is a process that partitions a physical server into a multiple virtual server - without server virtualization, physical servers use only a small amount of their processing capacities leaving devices idle.</li>
+<li>Storage virtualization combines functions of physical storage such as NAS and SAN device - you can combine multiple storage devices virtually into a single storage device.</li>
+<li>Network virtualization applies to how networks at various locations can be combined together.</li>
+<li>Data virtualization pulls out the functions of applications to run on different OS's.</li>
+</ol>
+<p><strong>Terms To Know</strong></p>
+<ul>
+<li>Virtual Machine (VM)</li>
+<li>Hypervisor
+<ul>
+<li>Type 1 hypervisor - bare-metal hypervisor - enterprise computing.</li>
+<li>Type 2 hypervisor - end-user computing.</li>
+</ul>
+</li>
+<li>Host computer - Physical computer.</li>
+<li>Guest machine - Computer installed on top of another computer.</li>
+</ul>
+<h3 id="onward-with-digital-virtualization">Onward with Digital Virtualization</h3>
+<p>So, virtualization is an important concept. Most newer computers have the necessary resources to instantiate multiple virtual machines. The first step is to determine if the computer you are using allows hardware virtualization. If hardware virtualization is available, then we will need to make sure that your computer has hardware virtualization enabled. Not all computer vendors enable hardware virtualization as a factory default setting.</p>
+<p>Note that you will only need to make a change one time if needed. You will not need to do this more than once on each computer you use and you can always undo this change in the CPU configuration  on your computer. So, let's start with a quick check to see if your computer has hardware virtualization enabled and if not, is it possible to enable hardware virtualization on the computer on which you will be working.</p>
+<h5 id="hardware-virtualization-on-windows-machines">Hardware Virtualization on Windows Machines</h5>
+<p>There are a couple of ways to enable hardware virtualization on a Windows box. The following steps assume you are working on machine running either Windows 10 or Windows 11. The steps are the same for both.</p>
+<h5 id="determining-if-virtualization-is-enabled">Determining if Virtualization is Enabled</h5>
+<p>Perform the following steps:</p>
+<ul>
+<li>Open the Task Manager by using the Ctrl+Shist+Esc-key sequence. This will open the Task Manager with more details than the usual method for invoking the Task Manager. The following screen shot shows what should show up on your screen.</li>
+</ul>
+<p><img alt="Task Manager Main Dialog" src="./images/task_manager_main.png"></p>
+<ul>
+<li>Click on the Performance tab in the window that pops up. This will get us closer to what is needed. The  information in the Performance tab will provide us with more information about your computer. The information displayed will help understand how resources are being used and what is available for other processes we may want to run and use.</li>
+</ul>
+<p><img alt="Task Manager Main Dialog" src="./images/task_manager_performance.png"></p>
+<ul>
+<li>Click on the CPU entry, and look to see if <strong>Virtualization:  Enabled</strong>. In the example displayed on the screen, you can see that virtualization is enabled and we can move on.</li>
+</ul>
+<p><img alt="Task Manager Main Dialog" src="./images/task_manager_virtualization.png"></p>
+<p>If there is no information, virtualization is not enabled or is not possible on the computer you are using. If the results show that virtualization is disabled, we will need to flip a flag to enable virtualization. The steps below will get you there.</p>
+<h5 id="bios-setting-steps-for-enabling-hardware-virtualization">BIOS Setting Steps for Enabling Hardware Virtualization</h5>
+<p>Modifications to the BIOS can be a bit tricky and cause some people to cringe a bit in changing these settings. So, you will need to be careful when following the steps. There is a usually a way to recover when modifying the BIOS, but since we are only changing one setting, you should be ok with this. If not, there is another way given below.</p>
+<ul>
+<li>If your computer is already on, you will need to restart the computer. As soon as the machine is restarting, start tapping rapidly on the appropriate key to enter into the boot menu or BIOS setting menu. On some computers this will be the ESC-key on others it may be F2-key or F4-key depending on the maker of the computer. On the authors laptop and Desktop, the BIOS setting escape key is the F2-Key.</li>
+<li>If the BIOS settings menu does not show up <strong>and</strong> the computer continues to boot up into Windows 10 (or Windows 11) repeat the previous step until it works or try the next section for a different method. Sometimes this just requires typing the ESC-key even faster.</li>
+<li>Once the BIOS menu is on your screen,  locate the CPU configuration menu. This will not be the same for all computers. So, you may need to click on some menus before seeing the correct item in a menu - see the description in the next step.</li>
+<li>Next find the setting for Virtualization. This may not be in the same location from one computer to the next. However, it will be there somewhere on most new computers.</li>
+<li>If Hardware Virtualization is disabled, select the Option for enabling Hardware Virtualization - usually a toggle between disabled and enabled.</li>
+<li>Save the changes that have been made to the BIOS setting.</li>
+<li>Finally, Exit the BIOS settings menu. and reboot the computer to have the changes take effect.</li>
+</ul>
+<p>In some implementations, you can do the save and exit in one step. When you have clicked on the "Exit" option or "Save and Exit" option the computer should boot up in the OS and behave pretty much as usual. You can check to see if the change worked by opening the Task Manager again and checking the CPU performance.</p>
+<p>Since this process is carried out before any real applications are available, there are no pictures in this case. However, we will see how to get a screen shot of some of the operations once we have a virtual machine up an running - more on that a bit later.</p>
+<h5 id="enable-hardware-virtualization-directly-in-the-settings-control-panel">Enable Hardware Virtualization Directly in the Settings Control Panel</h5>
+<p>For Windows 10 and 11 boxes there is a little easier way to get into the BIOS on your system. If your computer is running,</p>
+<ul>
+<li>Click on the Start menu on your desktop and click on the Setup icon.</li>
+</ul>
+<p><img alt="Setup Menu" src="./images/settings_main.png"></p>
+<ul>
+<li>Click on the "Update &amp; Security" link</li>
+</ul>
+<p><img alt="Update &amp; Security Link" src="./images/setup_update_link.png"></p>
+<ul>
+<li>Click on the "Restart now" button in the "Advanced restart" are of the dialog that pops up.</li>
+</ul>
+<p><img alt="Restart Now" src="./images/setup_restart_to_bios.png"></p>
+<p>At this point the computer should start through a reboot to the BIOS settings menu. From that point on the steps from the previous method can be used. You will need to find the virtualization enable/disable toggle just like before and then "Save and Exit" to reboot and start working.</p>
+<h5 id="hardware-virtualization-on-mac-os">Hardware Virtualization on MacOS</h5>
+<p>Unless you are extremely unlucky in your MacOS life, hardware virtualization will be enabled on your Macintosh/Apple computer.  To see if your Mac is one of the many that already have hardware virtualization enabled, do the following.</p>
+<ul>
+<li>Open a terminal by clicking on the terminal app on the desktop. Note that on the Macbook Pro used by the instructor, a link to a terminal appears on the Dock (or the Launchpad).</li>
+<li>At the prompt in the command terminal, type  the command<pre><code>  sysctl -a | grep machdep.cpu.features
+</code></pre>
+</li>
+</ul>
+<p><img alt="MacOS Virtualization Output" src="./images/macos_cpu_features.png"></p>
+<ul>
+<li>The output from the previous command should look like a rather long list of cryptic characters that indicate various states of things on your apple computer.</li>
+</ul>
+<p>If you parse through the  output there is a three character output, "VMX". This indicates that hardware virtualization is available on the Mac computer being used. If virtualization still needs to be enabled, you can start with the following approach.</p>
+<ul>
+<li>To enable hardware virtualization, you should run Software Update from Apple. The update may clear up a firmware  upgrade for the CPU on our Apple computer.</li>
+</ul>
+<p>If this still does not do the trick, see your instructor to make sure virtualization is enabled and available for the next content on virtual computers.</p>
+<h5 id="questions-and-problems">Questions and Problems:</h5>
+<p><strong>Question 1</strong> Verify that the computer you are using for the class is able to handle hardware virtualization. Along with the apps/commands needed to determine whether or not hardware virtualization is enabled, include a screenshot that shows the computer is hardware virtualization enabled. Use something like Snip&amp;Sketch or the equivalent Apple screen shot app.</p>
+<p><strong>Question 2</strong> Read the article at the link:</p>
+<p><a href="https://aws.amazon.com/what-is/virtualization">Cloud Computing</a></p>
+<p>and write a few sentences about the downside of running virtual  computers on your laptop or desktop. Do not use ChatGPT or other AI application. After writing your answer to this question,  run a request into ChatGPT to see what the bot finds. Compare your answer to the response from ChatGPT.</p>
+<p><strong>Question 3</strong> Provide a screen shot of the resources available on your physical computer. How many cores, speed, and so on. You can find the information in the About tab in the Updates and Security section on the computer. Use a screen shot of the popup window.</p>
+<h5 id="references">References:</h5>
+<ul>
+<li><a href="https://kb.parallels.com/en/5653">How to enable Intes VT-x virtualization feature in Max computer</a></li>
+<li><a href="www.oracle.com">Oracle</a>.</li>
+<li>Put in the YouTube reference for the VM</li>
+<li><a href="https://aws.amazon.com/what-is/virtualization">Cloud Computing</a></li>
+</ul>
+
+</body>
+</html>
