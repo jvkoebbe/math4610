@@ -6,6 +6,9 @@ Math 4610: Table of Contents:
   * [Syllabus for the Course](./syllabus/syllabus.md)
   * [Hardware Virtualization](./FCM/FCM_MODULES/FCM_VIRTUALIZATION/virtualization.md)
   * [How to Build a Virtual Machine (VM)](./FCM/FCM_MODULES/FCM_VIRTUAL_MACHINE/virtual_machines.md)
+
+<hr>
+
 * Lecture Materials: Day 2
   * 
 
