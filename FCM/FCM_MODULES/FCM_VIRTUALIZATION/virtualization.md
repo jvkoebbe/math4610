@@ -132,9 +132,40 @@ and write a few sentences about the downside of running virtual  computers on yo
 
 **Question 3** Provide a screen shot of the resources available on your physical computer. How many cores, speed, and so on. You can find the information in the About tab in the Updates and Security section on the computer. Use a screen shot of the popup window.
 
+**Question 4** What are the benefits of virtualization, and what is one situation where you would want to use a VM instead of a physical machine? 
+
+**Question 5** What is the difference between a native system virtual machine and a hosted system virtual machine? 
+
+**Question 6** What are 2 operational benefits of virtualization?
+
+**Question 7** What is the aim of a Virtual Appliance? 
+
+**Question 8** What is a virtual appliance and why would it be desirable over running services directly in your host operating system?
+
+**Question 9** What are 2 benefits of Virtualization?
+
+**Question 10** What is the advantage to using virtual appliances on servers to serve different functions rather than simply installing the processes on the machine?
+
+**Question 11** What are the benefits of using virtualization software?
+
+**Question 12**  What are the three main types of virtualization?
+
+**Question 13** What you should know about virtualization?
+
+**Question 14** What is the weakness of virtualization?
+
+**Question 15** What are the six areas of virtualization?
+
+**Question 16** What is the biggest challenge in virtualization?
+
+**Question 17** What is the risk of using virtualization?
+
+**Question 18** What is the strongest security feature of virtualization?
+
 ##### References:
 
 * [How to enable Intes VT-x virtualization feature in Max computer](https://kb.parallels.com/en/5653)
 * [Oracle](www.oracle.com).
 * Put in the YouTube reference for the VM
 * [Cloud Computing](https://aws.amazon.com/what-is/virtualization)
+* [Lehigh CSE Sys-Admin Questions](https://www.cse.lehigh.edu/~brian/course/2012/sysadmin/sample-exam3-questions.html)
