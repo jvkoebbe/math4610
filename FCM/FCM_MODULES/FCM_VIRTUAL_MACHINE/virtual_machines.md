@@ -248,6 +248,24 @@ This worked for me. There is a reference to a YouTube video I found  that correc
 
 **Question 5** What is the difference between native and hosted virtual machine monitors?
 
+**Question 6**  What are the three components of virtual machines?
+
+**Question 7** What is the main purpose of virtual machines?
+
+**Question 8** What creates virtual machines?
+
+**Question 9** What are the benefits of using virtual machine?
+
+**Question 10** Do virtual machines have different IP addresses?
+
+**Question 11** What are the disadvantages of using a virtual machine?
+
+**Question 12** What controls a virtual machine?
+
+**Question 13** What are the pros and cons of virtual machines?
+
+**Question 14** How safe are virtual machines?
+
 ### References:
 
 1. [How to run an Ubuntu Desktop virtual machine using VirtualBox 7](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
