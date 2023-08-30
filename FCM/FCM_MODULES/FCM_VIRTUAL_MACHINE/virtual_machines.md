@@ -236,8 +236,21 @@ Clicking on the Finish button will create the VM. The whole process will rule in
 
 This worked for me. There is a reference to a YouTube video I found  that corrected this problem.
 
+##### Questions and Problems:
+
+**Question 1** Suppose you are running a Windows machine, but you have a program that needs to run in a Linux environment. How can you run the program while still technically using your Windows machine?
+
+**Question 2** What is the difference between a native and a hosted virtual machine monitor (hypervisor)? 
+
+**Question 3** What is the difference between a virtual machine and a virtual appliance?
+
+**Question 4** What are the associated benefits of using virtualization software? Give a few examples of each benefit..
+
+**Question 5** What is the difference between native and hosted virtual machine monitors?
+
 ### References:
 
 1. [How to run an Ubuntu Desktop virtual machine using VirtualBox 7](https://ubuntu.com/tutorials/how-to-run-ubuntu-desktop-on-a-virtual-machine-using-virtualbox#1-overview)
 2. [NetworkChuck YouTube Tutorial](https://www.youtube.com/watch?v=wX75Z-4MEoM)
 3. [Black Screen Issue](https://www.youtube.com/watch?v=57U2sTzlfuM)
+4. [Lehigh CSE Sys-Admin Questions](https://www.cse.lehigh.edu/~brian/course/2012/sysadmin/sample-exam3-questions.html)
