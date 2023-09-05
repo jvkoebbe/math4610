@@ -1,0 +1,1216 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width initial-scale=1">
+<title>coding_example_1.md</title>
+<style type="text/css">
+.content {
+  padding: 84px 80px
+}
+</style>
+<style type="text/css">
+.content {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 700px; /* 700px is the width of the post in Medium */
+}
+
+/* hide TOC(table of contents). it's height is calculated from the original container */
+.content--buffer .table-of-contents {
+  height: 0;
+}
+
+.content > :first-child,
+.content > :first-child > * /* nested blocks */ {
+  margin-top: 0;
+}
+
+.content > :last-child,
+.content > :last-child > * /* nested blocks */ {
+  margin-bottom: 0;
+}
+
+.mermaid {
+  margin-bottom: 24px;
+}
+
+.page-break {
+  page-break-before: always;
+}
+
+@media print {
+  /* fix | code blocks in PDF export are trimmed */
+  .content pre {
+    white-space: pre-wrap;
+  }
+}
+</style>
+<style type="text/css">
+
+
+
+/*
+ * Read-only
+ *
+ * To add a theme:
+ *   1. Add a .css file to the same folder.
+ *   2. Restart the app.
+ *
+ * Taken from https://github.com/sindresorhus/github-markdown-css */
+
+
+
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format('woff');
+}
+
+:root {
+  background: #fff;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.content {
+  max-width: 890px;
+}
+
+.katex-display {
+  padding: 0.6rem 0;
+  overflow-x: auto;
+}
+
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+a:active,
+a:hover {
+  outline-width: 0;
+}
+
+strong {
+  font-weight: inherit;
+}
+
+strong {
+  font-weight: bolder;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+img {
+  border-style: none;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+code,
+kbd,
+.content > pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+input {
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  overflow: visible;
+}
+
+button:-moz-focusring,
+[type="button"]:-moz-focusring,
+[type="reset"]:-moz-focusring,
+[type="submit"]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+td,
+th {
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+input {
+  font: 13px/1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  text-decoration: underline;
+}
+
+hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+hr::before {
+  display: table;
+  content: "";
+}
+
+hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 21px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+h4 {
+  font-size: 14px;
+}
+
+h5 {
+  font-size: 12px;
+}
+
+h6 {
+  font-size: 11px;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-roman;
+}
+
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+dd {
+  margin-left: 0;
+}
+
+code {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.content > pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.pl-0 {
+  padding-left: 0 !important;
+}
+
+.pl-1 {
+  padding-left: 3px !important;
+}
+
+.pl-2 {
+  padding-left: 6px !important;
+}
+
+.pl-3 {
+  padding-left: 12px !important;
+}
+
+.pl-4 {
+  padding-left: 24px !important;
+}
+
+.pl-5 {
+  padding-left: 36px !important;
+}
+
+.pl-6 {
+  padding-left: 48px !important;
+}
+
+.form-select::-ms-expand {
+  opacity: 0;
+}
+
+.markdown-body:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+.anchor {
+  display: inline-block;
+  padding-right: 2px;
+  margin-left: -18px;
+}
+
+.anchor:focus {
+  outline: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+  color: #000;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+  text-decoration: none;
+}
+
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+
+h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+h1 .anchor {
+  line-height: 1;
+}
+
+h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+h2 .anchor {
+  line-height: 1;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+h3 .anchor {
+  line-height: 1.2;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h4 .anchor {
+  line-height: 1.2;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h5 .anchor {
+  line-height: 1.1;
+}
+
+h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+h6 .anchor {
+  line-height: 1.1;
+}
+
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+.content > pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+ul,
+ol {
+  padding-left: 2em;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+li>p {
+  margin-top: 16px;
+}
+
+dl {
+  padding: 0;
+}
+
+dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+blockquote>:first-child {
+  margin-top: 0;
+}
+
+blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+table th {
+  font-weight: bold;
+}
+
+table th,
+table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+img {
+  max-width: 100%;
+  box-sizing: content-box;
+  background-color: #fff;
+}
+
+code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+code:before,
+code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.highlight {
+  margin-bottom: 16px;
+}
+
+.highlight pre,
+.content > pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.content > pre {
+  word-wrap: normal;
+}
+
+pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+pre code:before,
+pre code:after {
+  content: normal;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.pl-c {
+  color: #969896;
+}
+
+.pl-c1,
+.pl-s .pl-v {
+  color: #0086b3;
+}
+
+.pl-e,
+.pl-en {
+  color: #795da3;
+}
+
+.pl-s .pl-s1,
+.pl-smi {
+  color: #333;
+}
+
+.pl-ent {
+  color: #63a35c;
+}
+
+.pl-k {
+  color: #a71d5d;
+}
+
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+  color: #183691;
+}
+
+.pl-v {
+  color: #ed6a43;
+}
+
+.pl-id {
+  color: #b52a1d;
+}
+
+.pl-ii {
+  background-color: #b52a1d;
+  color: #f8f8f8;
+}
+
+.pl-sr .pl-cce {
+  color: #63a35c;
+  font-weight: bold;
+}
+
+.pl-ml {
+  color: #693a17;
+}
+
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+  color: #1d3e81;
+  font-weight: bold;
+}
+
+.pl-mq {
+  color: #008080;
+}
+
+.pl-mi {
+  color: #333;
+  font-style: italic;
+}
+
+.pl-mb {
+  color: #333;
+  font-weight: bold;
+}
+
+.pl-md {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.pl-mi1 {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.pl-mdr {
+  color: #795da3;
+  font-weight: bold;
+}
+
+.pl-mo {
+  color: #1d3e81;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
+}
+
+.full-commit .btn-outline:not(:disabled):hover {
+  color: #4078c0;
+  border: 1px solid #4078c0;
+}
+
+:checked+.radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #4078c0;
+}
+
+.octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+
+.task-list-item {
+  list-style-type: none;
+}
+
+.task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+
+hr {
+  border-bottom-color: #eee;
+}
+
+/* Code
+   ---------------- */
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #aaa;
+}
+
+.token.operator,
+.token.punctuation {
+  color: #888;
+}
+
+.token.selector,
+.token.attr-name,
+.token.entity,
+.token.url {
+  color: #987;
+}
+
+.token.tag,
+.token.constant,
+.token.keyword {
+  color: #a7a;
+}
+
+.token.function,
+.token.attr-value {
+  color: #68a;
+}
+
+.token.number,
+.token.boolean,
+.token.regex,
+.token.string {
+  color: #6a8;
+}
+
+.token.variable,
+.token.property,
+.token.key {
+  color: #a66;
+}
+
+</style>
+</head>
+<body>
+<h1 id="fcm-coding-example-approximation-of-the-derivative-of-a-function">FCM Coding Example: Approximation of the Derivative of a Function</h1>
+<p>The derivative is a fundamental too starting in Calculus and in some cases Precalculus Algebra. As a tool in our mathematical toolkit, the derivative is like your trusty old Swiss Army knife or multitool that has the logo worn off.</p>
+<p><img alt="Swiss Army Knife" src="./images/swiss_army_knife.webp"></p>
+<p>In scientific computing we use derivatives in the solution of root finding problems, optimization problems, differential equations, and a whole pile of other related problems. What we will do in this module is look at problems  that occur when the derivative of a function is approximated.</p>
+<h3 id="a-definition-of-the-derivative">A Definition of the Derivative</h3>
+<p>In most calculus textbooks, the presentation will go through limits of functions and continuity, followed by concepts the define and apply derivatives. In this module it is assumed that you have a handle on the definitions of limits and continuity. We will start with the definition of the derivative.</p>
+<blockquote>
+<p><strong>Definition:</strong> Suppose the function, <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>f(x)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span>, is defined in an open interval, <span class="katex"><span class="katex-mathml"><math><mrow><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo></mrow>(a,b)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span>, then <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi></mrow>f</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.8888799999999999em;vertical-align:-0.19444em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span></span></span></span> is differentiable at <span class="katex"><span class="katex-mathml"><math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>∈</mo><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo></mrow>x_1\in(a,b)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mrel">∈</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span>, if the limit</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>→</mo><mtext>&nbsp;</mtext><msub><mi>x</mi><mn>1</mn></msub></mrow></msub><mtext>&nbsp;</mtext><mfrac><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac></mrow>
+ f'(x_1) = \lim_{x_2\rightarrow\ x_1}\ \frac{f(x_2)-f(x_1)}{x_2-x_1}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.263em;vertical-align:-0.8360000000000001em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.1em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.31731428571428577em;" class="vlist"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.143em;" class="vlist"></span></span></span></span></span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.31731428571428577em;" class="vlist"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.143em;" class="vlist"></span></span></span></span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.8000999999999999em;" class="vlist"></span></span></span></span><span class="mord"><span class="mspace">&nbsp;</span><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.3139999999999996em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">−</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.8360000000000001em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>exists. If the limit exists, the value of the derivative is, <span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow>f'(x_1)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.751892em;" class="strut"></span><span style="height:1.001892em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.751892em;" class="vlist"><span style="top:-3.063em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span>. If the function
+is differentiable at each point in <span class="katex"><span class="katex-mathml"><math><mrow><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo></mrow>(a,b)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span>, we say that the function is
+differentiable on the interval <span class="katex"><span class="katex-mathml"><math><mrow><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo></mrow>(a,b)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span>.</p>
+</blockquote>
+<p>For the purposes of computing approximate derivatives, the quantity</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><mi mathvariant="normal">Δ</mi><mi>f</mi><mo>=</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow>
+  \Delta f = f(x_2) - f(x_1)
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mord mathrm">Δ</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mrel">=</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>
+<p>is the difference of <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi></mrow>f</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.8888799999999999em;vertical-align:-0.19444em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span></span></span></span>  (usually) close to <span class="katex"><span class="katex-mathml"><math><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow>x_1</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.58056em;vertical-align:-0.15em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi><mo>=</mo><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow>\Delta x=(x_2-x_1)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mord mathrm">Δ</span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">−</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span> is an increment or difference in the independent variable, <span class="katex"><span class="katex-mathml"><math><mrow><mi>x</mi></mrow>x</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.43056em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">x</span></span></span></span>, (usually) near <span class="katex"><span class="katex-mathml"><math><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow>x_1</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.58056em;vertical-align:-0.15em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span></span></span></span>. The quantity</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><mfrac><mrow><mi mathvariant="normal">Δ</mi><mi>f</mi></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac></mrow>
+  \frac{\Delta f}{\Delta x} = \frac{f(x_2)-f(x_1)}{x_2-x_1}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.263em;vertical-align:-0.8360000000000001em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.3714399999999998em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span class="mord mathit">x</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span style="margin-right:0.10764em;" class="mord mathit">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.3139999999999996em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">−</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.8360000000000001em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>is referred to as the <strong>difference quotient</strong> of <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi></mrow>f</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.8888799999999999em;vertical-align:-0.19444em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span></span></span></span> at <span class="katex"><span class="katex-mathml"><math><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow>x_1</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.58056em;vertical-align:-0.15em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span></span></span></span>. In terms of mathematical notation, we will say</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>→</mo><mtext>&nbsp;</mtext><msub><mi>x</mi><mn>1</mn></msub></mrow></msub><mtext>&nbsp;</mtext><mfrac><mrow><mi mathvariant="normal">Δ</mi><mi>f</mi></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow></mfrac></mrow>
+  f'(x_1) = \lim_{x_2\rightarrow\ x_1}\ \frac{\Delta f}{\Delta x}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.3714399999999998em;" class="strut"></span><span style="height:2.17154em;vertical-align:-0.8000999999999999em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.1em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.31731428571428577em;" class="vlist"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.143em;" class="vlist"></span></span></span></span></span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.31731428571428577em;" class="vlist"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.143em;" class="vlist"></span></span></span></span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.8000999999999999em;" class="vlist"></span></span></span></span><span class="mord"><span class="mspace">&nbsp;</span><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.3714399999999998em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span class="mord mathit">x</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span style="margin-right:0.10764em;" class="mord mathit">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>which is equivalent to</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi><mo>→</mo><mtext>&nbsp;</mtext><mn>0</mn></mrow></msub><mtext>&nbsp;</mtext><mfrac><mrow><mi mathvariant="normal">Δ</mi><mi>f</mi></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow></mfrac></mrow>
+   f'(x_1) = \lim_{\Delta x\rightarrow\ 0}\ \frac{\Delta f}{\Delta x}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.3714399999999998em;" class="strut"></span><span style="height:2.1157709999999996em;vertical-align:-0.744331em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.055669em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">Δ</span><span class="mord mathit mtight">x</span><span class="mrel mtight">→</span><span class="mord mathrm mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathrm mtight">0</span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.744331em;" class="vlist"></span></span></span></span><span class="mord"><span class="mspace">&nbsp;</span><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.3714399999999998em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span class="mord mathit">x</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span style="margin-right:0.10764em;" class="mord mathit">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>In practical terms, we can say that as <span class="katex"><span class="katex-mathml"><math><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow>\Delta x</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.68333em;" class="strut"></span><span style="height:0.68333em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathrm">Δ</span><span class="mord mathit">x</span></span></span></span> gets close to zero, the value of the difference quotient will get closer to the derivative of the function at <span class="katex"><span class="katex-mathml"><math><mrow><msub><mi>x</mi><mn>1</mn></msub></mrow>x_1</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.58056em;vertical-align:-0.15em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow>f'(x_1)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.751892em;" class="strut"></span><span style="height:1.001892em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.751892em;" class="vlist"><span style="top:-3.063em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
+<p>We will try to verify the limits on difference quotients for simple functions By writing a computer code to compute approximate derivative values we can see how well the ideas of this section will work. You should note that the difference quotient can be written a number of ways. One way is to make a simple substitution, <span class="katex"><span class="katex-mathml"><math><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mi>h</mi></mrow>x_2=x_1+h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.84444em;vertical-align:-0.15em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">+</span><span class="mord mathit">h</span></span></span></span>. The result will be</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><mfrac><mrow><mi mathvariant="normal">Δ</mi><mi>f</mi></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mi>h</mi><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  \frac{\Delta f}{\Delta x} = \frac{f(x_2)-f(x_1)}{x_2-x_1} = \frac{f(x_1+h)-f(x_1)}{x_1+h-x_1} = \frac{f(x_1+h)-f(x_1)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.263em;vertical-align:-0.8360000000000001em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.3714399999999998em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span class="mord mathit">x</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span style="margin-right:0.10764em;" class="mord mathit">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.3139999999999996em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">−</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.8360000000000001em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.3139999999999996em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mbin">−</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.8360000000000001em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>or choosing <span class="katex"><span class="katex-mathml"><math><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mi>x</mi><mo>=</mo><mi>a</mi></mrow>x_1=x=a</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.58056em;vertical-align:-0.15em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mrel">=</span><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">a</span></span></span></span> and</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><mfrac><mrow><mi mathvariant="normal">Δ</mi><mi>f</mi></mrow><mrow><mi mathvariant="normal">Δ</mi><mi>x</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  \frac{\Delta f}{\Delta x} = \frac{f(x+h)-f(x)}{h} = \frac{f(a+h)-f(a)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.113em;vertical-align:-0.686em;" class="strut bottom"></span><span class="base"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.3714399999999998em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span class="mord mathit">x</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">Δ</span><span style="margin-right:0.10764em;" class="mord mathit">f</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>These last expressions are especially helpful in analyzing the accuracy of the approximation we are working with.</p>
+<p>As one last note, consider the limits we have been using to define the derivative. There are a number of algebraically equivalent difference forms that can be used to approximate the derivative of a function. We will use the following definitions interchangeably.</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>→</mo><mtext>&nbsp;</mtext><msub><mi>x</mi><mn>1</mn></msub></mrow></msub><mtext>&nbsp;</mtext><mfrac><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>−</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac></mrow>
+   f'(x_1) = \lim_{x_2\rightarrow\ x_1}\ \frac{f(x_2)-f(x_1)}{x_2-x_1}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.263em;vertical-align:-0.8360000000000001em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.1em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.31731428571428577em;" class="vlist"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.143em;" class="vlist"></span></span></span></span></span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.31731428571428577em;" class="vlist"><span style="top:-2.357em;margin-left:0em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.143em;" class="vlist"></span></span></span></span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.8000999999999999em;" class="vlist"></span></span></span></span><span class="mord"><span class="mspace">&nbsp;</span><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.3139999999999996em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">−</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.8360000000000001em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><mi>h</mi><mo>→</mo><mtext>&nbsp;</mtext><mn>0</mn></mrow></msub><mtext>&nbsp;</mtext><mfrac><mrow><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  f'(x_1) = \lim_{h\rightarrow\ 0}\ \frac{f(x_1+h)-f(x_1)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.179108em;vertical-align:-0.7521079999999999em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.047892em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">h</span><span class="mrel mtight">→</span><span class="mord mathrm mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathrm mtight">0</span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.7521079999999999em;" class="vlist"></span></span></span></span><span class="mord"><span class="mspace">&nbsp;</span><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.30110799999999993em;" class="vlist"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.15em;" class="vlist"></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><mi>h</mi><mo>→</mo><mtext>&nbsp;</mtext><mn>0</mn></mrow></msub><mtext>&nbsp;</mtext><mfrac><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  f'(x) = \lim_{h\rightarrow\ 0}\ \frac{f(x+h)-f(x)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.179108em;vertical-align:-0.7521079999999999em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.047892em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">h</span><span class="mrel mtight">→</span><span class="mord mathrm mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathrm mtight">0</span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.7521079999999999em;" class="vlist"></span></span></span></span><span class="mord"><span class="mspace">&nbsp;</span><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>and</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>a</mi><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><mi>h</mi><mo>→</mo><mtext>&nbsp;</mtext><mn>0</mn></mrow></msub><mtext>&nbsp;</mtext><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  f'(a) = \lim_{h\rightarrow\ 0}\ \frac{f(a+h)-f(a)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.179108em;vertical-align:-0.7521079999999999em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.047892em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">h</span><span class="mrel mtight">→</span><span class="mord mathrm mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathrm mtight">0</span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.7521079999999999em;" class="vlist"></span></span></span></span><span class="mord"><span class="mspace">&nbsp;</span><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>The next section will assume these definitions provide a reasonably accurate approximation of the derivative of a function at a given point.</p>
+<h3 id="alternate-difference-quotients">Alternate Difference Quotients.</h3>
+<p>Before testing the approximation we have, it is important to realize that there are other difference quotient forms that may be useful in our work. A few of these are presented below.</p>
+<h5 id="one-sided-difference-quotients">One Sided Difference Quotients</h5>
+<p>Our only approximation so far is given by approximating the derivative as follows.</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>a</mi><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><mi>h</mi><mo>→</mo><mtext>&nbsp;</mtext><mn>0</mn></mrow></msub><mtext>&nbsp;</mtext><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac><mo>≈</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  f'(a) = \lim_{h\rightarrow\ 0}\ \frac{f(a+h)-f(a)}{h} \approx \frac{f(a+h)-f(a)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.179108em;vertical-align:-0.7521079999999999em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.047892em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">h</span><span class="mrel mtight">→</span><span class="mord mathrm mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathrm mtight">0</span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.7521079999999999em;" class="vlist"></span></span></span></span><span class="mord"><span class="mspace">&nbsp;</span><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">≈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>So, for <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi><mo>≠</mo><mn>0</mn></mrow>h\neq 0</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.716em;" class="strut"></span><span style="height:0.9309999999999999em;vertical-align:-0.215em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span><span class="mrel">≠</span><span class="mord mathrm">0</span></span></span></span>, this should give an approximation to the derivative and if the limit exists, the value should converge to  the derivative. We must notice that the approximation is always a ratio of differences,  both of which are getting closer and closer to zero. This is usually referred to as an indeterminate form, "zero over zero". All derivatives are comprised of indeterminate forms that get resolved when the limit is computed.</p>
+<p>The difference quotient approximation,</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>a</mi><mo>)</mo><mo>≈</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  f'(a) \approx \frac{f(a+h)-f(a)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.113em;vertical-align:-0.686em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mrel">≈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>is referred to as a "one-sided" approximation of the derivative. This is due to the difference using the point, <span class="katex"><span class="katex-mathml"><math><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow>x=a</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.43056em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">a</span></span></span></span>, and a point on one side of this point. In many cases it will be assumed that <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi><mo>&gt;</mo><mn>0</mn></mrow>h&gt;0</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.73354em;vertical-align:-0.0391em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span><span class="mrel">&gt;</span><span class="mord mathrm">0</span></span></span></span>. This also makes it easier to use the formula for the approximation.</p>
+<p>There is another form that we could use that involves the evaluation of the function on one sider of <span class="katex"><span class="katex-mathml"><math><mrow><mi>x</mi><mo>=</mo><mi>a</mi></mrow>x=a</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.43056em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">x</span><span class="mrel">=</span><span class="mord mathit">a</span></span></span></span>.  We could just as easily use the definition of the derivative and the approximation of the derivative as</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>a</mi><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><mi>h</mi><mo>→</mo><mtext>&nbsp;</mtext><mn>0</mn></mrow></msub><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>−</mo><mi>h</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac><mo>≈</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>−</mo><mi>h</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac><mi mathvariant="normal">.</mi></mrow>
+  f'(a) = \lim_{h\rightarrow\ 0} \frac{f(a)-f(a-h)}{h} \approx \frac{f(a)-f(a-h)}{h}.
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.179108em;vertical-align:-0.7521079999999999em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.047892em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">h</span><span class="mrel mtight">→</span><span class="mord mathrm mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathrm mtight">0</span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.7521079999999999em;" class="vlist"></span></span></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">−</span><span class="mord mathit">h</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">≈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">−</span><span class="mord mathit">h</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord mathrm">.</span></span></span></span></span>
+<p>The derivative of a function will exist if the limit exists.</p>
+<p>One might ask why we would need more than one difference quotient in our work. As a thought experiment: Suppose we define a function on an open interval. <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>f(x)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span> on <span class="katex"><span class="katex-mathml"><math><mrow><mi>x</mi><mo>∈</mo><mo>(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo>)</mo></mrow>x\in(a,b)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mord mathit">x</span><span class="mrel">∈</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mpunct">,</span><span class="mord mathit">b</span><span class="mclose">)</span></span></span></span> where the function is not defined for <span class="katex"><span class="katex-mathml"><math><mrow><mi>x</mi><mo>&lt;</mo><mi>a</mi></mrow>x&lt;a</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.5391em;" class="strut"></span><span style="height:0.5782em;vertical-align:-0.0391em;" class="strut bottom"></span><span class="base"><span class="mord mathit">x</span><span class="mrel">&lt;</span><span class="mord mathit">a</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><mrow><mi>x</mi><mo>&gt;</mo><mi>b</mi></mrow>x&gt;b</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.73354em;vertical-align:-0.0391em;" class="strut bottom"></span><span class="base"><span class="mord mathit">x</span><span class="mrel">&gt;</span><span class="mord mathit">b</span></span></span></span>. Then we can define the one-sided derivatives</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>a</mi><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><mi>h</mi><mo>→</mo><mtext>&nbsp;</mtext><msup><mn>0</mn><mo>+</mo></msup></mrow></msub><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac><mo>≈</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  f'(a) = \lim_{h\rightarrow\ 0^+} \frac{f(a+h)-f(a)}{h} \approx \frac{f(a+h)-f(a)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.1848650000000003em;vertical-align:-0.757865em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.042135em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">h</span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.7026642857142857em;" class="vlist"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.757865em;" class="vlist"></span></span></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">≈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>and</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>b</mi><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><mi>h</mi><mo>→</mo><mtext>&nbsp;</mtext><msup><mn>0</mn><mo>+</mo></msup></mrow></msub><mfrac><mrow><mi>f</mi><mo>(</mo><mi>b</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>b</mi><mo>−</mo><mi>h</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac><mo>≈</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>b</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>b</mi><mo>−</mo><mi>h</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  f'(b) = \lim_{h\rightarrow\ 0^+} \frac{f(b)-f(b-h)}{h} \approx \frac{f(b)-f(b-h)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.1848650000000003em;vertical-align:-0.757865em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.042135em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">h</span><span class="mrel mtight">→</span><span class="mord mtight"><span class="mspace mtight"><span class="mtight">&nbsp;</span></span><span class="mord mathrm mtight">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.7026642857142857em;" class="vlist"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mbin mtight">+</span></span></span></span></span></span></span></span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.757865em;" class="vlist"></span></span></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">b</span><span class="mbin">−</span><span class="mord mathit">h</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">≈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">b</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">b</span><span class="mbin">−</span><span class="mord mathit">h</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>Note that both limits assume <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi><mo>&gt;</mo><mn>0</mn></mrow>h&gt;0</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.73354em;vertical-align:-0.0391em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span><span class="mrel">&gt;</span><span class="mord mathrm">0</span></span></span></span>. Also, the formula you need will be slightly different for each endpoint of the interval.</p>
+<h5 id="central-differences">Central Differences</h5>
+<p>There are infinitely many difference quotients that can be proposed as an approximation of the derivative of a function. There is actually an algorithmic way to compute any difference quotient that is consistent with the derivative of a function at a point. However, we won't go into it right now. We will come back to this topic in a later lesson.</p>
+<p>For now,  we will consider one additional difference quotient. We will use a symmetric definition of the derivative as follows</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>a</mi><mo>)</mo><mo>=</mo><msub><mi>lim</mi><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></msub><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>−</mo><mi>h</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>h</mi></mrow></mfrac><mo>≈</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>−</mo><mi>h</mi><mo>)</mo></mrow><mrow><mn>2</mn><mi>h</mi></mrow></mfrac></mrow>
+  f'(a) = \lim_{h\rightarrow 0} \frac{f(a+h)-f(a-h)}{2h} \approx \frac{f(a+h)-f(a-h)}{2h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.179108em;vertical-align:-0.7521079999999999em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.69444em;" class="vlist"><span style="top:-2.047892em;margin-left:0em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathit mtight">h</span><span class="mrel mtight">→</span><span class="mord mathrm mtight">0</span></span></span></span><span style="top:-2.7em;"><span style="height:2.7em;" class="pstrut"></span><span><span class="mop">lim</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.7521079999999999em;" class="vlist"></span></span></span></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">2</span><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">−</span><span class="mord mathit">h</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mrel">≈</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathrm">2</span><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">−</span><span class="mord mathit">h</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>This is called a central difference quotient for approximation of the derivative. The points in the expression where the function is evaluated are located symmetrically on either side of the point <span class="katex"><span class="katex-mathml"><math><mrow><mi>a</mi><mo>=</mo><mi>a</mi></mrow>a=a</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.43056em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathit">a</span></span></span></span> where the derivative is to be evaluated.</p>
+<h3 id="some-examples">Some Examples</h3>
+<blockquote>
+<p><strong>Example 2</strong>
+Define a example function like</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><msup><mi>e</mi><mrow><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msup></mrow>
+  f(x) = x e^{-x^2}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.0369199999999998em;" class="strut"></span><span style="height:1.2869199999999998em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit">x</span><span class="mord"><span class="mord mathit">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:1.0369199999999998em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight"><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8913142857142857em;" class="vlist"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span>
+<p>that is differentiable everywhere and use a one-sided difference</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>a</mi><mo>)</mo><mo>=</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>h</mi></mrow></mfrac></mrow>
+  f'(a) = \frac{f(a+h)-f(a)}{h}
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.427em;" class="strut"></span><span style="height:2.113em;vertical-align:-0.686em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:1.427em;" class="vlist"><span style="top:-2.314em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span class="mord mathit">h</span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.677em;"><span style="height:3em;" class="pstrut"></span><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mbin">+</span><span class="mord mathit">h</span><span class="mclose">)</span><span class="mbin">−</span><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">a</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.686em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p>to approximate the derivative. The table below gives a few results at different
+point. Then, approximations and an "exact" value computed using a calculator.
+The "exact" value comes from computing the derivative,</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><span class="katex"><span class="katex-mathml"><math><mrow><mi>a</mi></mrow>a</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.43056em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">a</span></span></span></span></th>
+<th><span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span></th>
+<th>exact</th>
+<th>approximation</th>
+<th>difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.0</td>
+<td>0.01</td>
+<td>-0.367879</td>
+<td>-0.371499</td>
+<td>0.003617</td>
+</tr>
+<tr>
+<td><span class="katex"><span class="katex-mathml"><math><mrow><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow>\sqrt{2}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.90722em;" class="strut"></span><span style="height:1.04em;vertical-align:-0.13278em;" class="strut bottom"></span><span class="base"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.90722em;" class="vlist svg-align"><span style="top:-3em;"><span style="height:3em;" class="pstrut"></span><span style="padding-left:0.833em;" class="mord"><span class="mord mathrm">2</span></span></span><span style="top:-2.86722em;"><span style="height:3em;" class="pstrut"></span><span style="height:1em;"><svg height="1em" width="100%">
+            <svg preserveAspectRatio="xMinYMin
+slice" viewBox="0 0 400000 1000"><path d="M95 622c-2.667 0-7.167-2.667-13.5
+-8S72 604 72 600c0-2 .333-3.333 1-4 1.333-2.667 23.833-20.667 67.5-54s
+65.833-50.333 66.5-51c1.333-1.333 3-2 5-2 4.667 0 8.667 3.333 12 10l173
+378c.667 0 35.333-71 104-213s137.5-285 206.5-429S812 17.333 812 14c5.333
+-9.333 12-14 20-14h399166v40H845.272L620 507 385 993c-2.667 4.667-9 7-19
+7-6 0-10-1-12-3L160 575l-65 47zM834 0h399166v40H845z"></path></svg></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.13278em;" class="vlist"></span></span></span></span></span></span></span></td>
+<td>0.01</td>
+<td>-0.404070</td>
+<td>-0.406006</td>
+<td>0.001936</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the derivative of the function in the example, which was used to compute the "exact" derivative value,, is</p>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math><mrow><msup><mi>f</mi><mo mathvariant="normal">′</mo></msup><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>e</mi><mrow><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msup><mo>−</mo><mn>2</mn><mtext>&nbsp;</mtext><msup><mi>x</mi><mn>2</mn></msup><mtext>&nbsp;</mtext><msup><mi>e</mi><mrow><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msup><mo>=</mo><msup><mi>e</mi><mrow><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></msup><mtext>&nbsp;</mtext><mo>(</mo><mn>1</mn><mo>−</mo><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>)</mo></mrow>
+  f'(x) = e^{-x^2} - 2\ x^2\ e^{-x^2} = e^{-x^2}\ ( 1 - 2x^2)
+</math></span><span aria-hidden="true" class="katex-html"><span style="height:1.0369199999999998em;" class="strut"></span><span style="height:1.2869199999999998em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span class="mord"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.801892em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">′</span></span></span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord"><span class="mord mathit">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:1.0369199999999998em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight"><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8913142857142857em;" class="vlist"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mbin">−</span><span class="mord mathrm">2</span><span class="mord"><span class="mspace">&nbsp;</span><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8641079999999999em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span></span></span></span></span><span class="mord"><span class="mspace">&nbsp;</span><span class="mord mathit">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:1.0369199999999998em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight"><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8913142857142857em;" class="vlist"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mrel">=</span><span class="mord"><span class="mord mathit">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:1.0369199999999998em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight"><span class="mord mathit mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8913142857142857em;" class="vlist"><span style="top:-2.931em;margin-right:0.07142857142857144em;"><span style="height:2.5em;" class="pstrut"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathrm mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mopen"><span class="mspace">&nbsp;</span><span class="mopen">(</span></span><span class="mord mathrm">1</span><span class="mbin">−</span><span class="mord mathrm">2</span><span class="mord"><span class="mord mathit">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8641079999999999em;" class="vlist"><span style="top:-3.113em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathrm mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span>
+<p>Even though the derivative can easily be computed, there is another issue that will be covered in the next lesson. That is, <span class="katex"><span class="katex-mathml"><math><mrow><mi>e</mi><mo>≈</mo><mn>2</mn><mi mathvariant="normal">.</mi><mn>7</mn><mn>1</mn><mn>8</mn><mn>2</mn><mn>8</mn><mn>1</mn><mn>8</mn><mn>2</mn><mn>8</mn><mo>…</mo></mrow>e\approx2.718281828\ldots</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.64444em;" class="strut"></span><span style="height:0.64444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">e</span><span class="mrel">≈</span><span class="mord mathrm">2</span><span class="mord mathrm">.</span><span class="mord mathrm">7</span><span class="mord mathrm">1</span><span class="mord mathrm">8</span><span class="mord mathrm">2</span><span class="mord mathrm">8</span><span class="mord mathrm">1</span><span class="mord mathrm">8</span><span class="mord mathrm">2</span><span class="mord mathrm">8</span><span class="minner">…</span></span></span></span> can only be approximated due to the fact that irrational numbers like <span class="katex"><span class="katex-mathml"><math><mrow><mi>e</mi></mrow>e</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.43056em;" class="strut"></span><span style="height:0.43056em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">e</span></span></span></span> do not have a repeating pattern. So, in order to write down the exact value, we would need an infinite number of digits to get the exact value. This means  that we will ALWAYS need an approximation for these types of numbers. We will more carefully analyze number representations in the next lesson in the course.</p>
+<h3 id="computer-code-to-test-difference-quotient-approximation-for-accuracy">Computer Code to Test Difference Quotient Approximation for Accuracy</h3>
+<p>In the particular case of the original one-sided difference quotient approximation , let's code the derivative approximation using Python. A code that computes a sequence of approximations as <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi><mo>→</mo><mtext>&nbsp;</mtext><mn>0</mn></mrow>h\rightarrow\ 0</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span><span class="mrel">→</span><span class="mord mathrm"><span class="mspace">&nbsp;</span><span class="mord mathrm">0</span></span></span></span></span>. The code defines a function, sets an initial increment, and  then computes a sequence of approximation by dividing the last <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> by 2 each time through.</p>
+<p><strong>Python Code</strong></p>
+<pre><code>#
+# the code in this file will approximate the derivative of a "smooth" function
+# using a forward difference
+#
+# storage
+import numpy as np
+import matplotlib.pyplot as plt
+#
+#
+# test function for computing derivatives
+#
+# the derivative
+# --------------
+#
+def f(x):
+    fval = x * np.exp(-x)
+    return fval
+#
+# the exact derivative expression
+# -------------------------------
+#
+def df(x):
+    dfval = np.exp(-x) - x * np.exp(-x)
+    return dfval
+#
+# the difference quotient for the derivative approximation
+# --------------------------------------------------------
+#
+def dfapp(x, h):
+    appval = ( f(x+h) - f(x) ) / h
+    return appval
+#
+# location for the derivative along with an array for increment to use in the
+# approximation and an array to store the error for each value tested
+# -------------------------------------------------------------------
+#
+x0 = 1.2
+napprox = 50
+h = []
+error = []
+#
+# initialize the increment to do the initial approximation
+# --------------------------------------------------------
+#
+hval = 1.0
+#
+# compute the "exact" derivative
+# ------------------------------
+#
+dfexct = df(x0)
+#
+# loop over i for generating a list of approximate values
+# -------------------------------------------------------
+#
+for i in range(napprox):
+    #
+    # compute the difference quotient for the function
+    # ------------------------------------------------
+    #
+    dfappr = dfapp(x0, hval)
+    #
+    # compute the approximate error between the "exact" value and the approximate
+    # value
+    # -----
+    errval = np.abs(dfappr-dfexct)
+    #
+    # store the value of the increment and the error for use below
+    # ------------------------------------------------------------
+    #
+    h.append(hval)
+    error.append(errval)
+    #
+    # update the increment by reducing the increment by one half
+    # ----------------------------------------------------------
+    #
+    hval = hval / 2
+        #
+    # print each of the raw data value for the current index, i, increment,
+    # hval,and the current error, error[i]
+    # ------------------------------------
+    #
+    print(i, h[i], error[i])
+#
+# the rest of the code will bring up a graphical representation of the error
+# as a function of the increment, h.
+# ----------------------------------
+#
+plt.plot(h, error)
+plt.title("Graph of Error in Derivative Approximation")
+plt.xlabel("h (Increment Value)")
+plt.ylabel("error (Error in Derivative Approximation)")
+plt.show()
+</code></pre>
+<p>The result of running the code is the following list of values. The formatting is not the greatest. However, the basic result can be seen. As we look through the list the error seems to be decreasing - at least through the first 26 lines of error outputs.</p>
+<pre><code>0 1.0 0.057427263515067606
+1 0.5 0.04150328442754686
+2 0.25 0.02498570385210358
+3 0.125 0.013714225632078414
+4 0.0625 0.007185328626356846
+5 0.03125 0.0036777504877701372
+6 0.015625 0.0018605371807634552
+7 0.0078125 0.0009357336017561946
+8 0.00390625 0.0004692392907006959
+9 0.001953125 0.0002349635503467451
+10 0.0009765625 0.00011756784942101861
+11 0.00048828125 5.880545562925166e-05
+12 0.000244140625 2.9408112132867092e-05
+13 0.0001220703125 1.470540268294629e-05
+14 6.103515625e-05 7.3530388736142704e-06
+15 3.0517578125e-05 3.6766039020474928e-06
+16 1.52587890625e-05 1.838325934866436e-06
+17 7.62939453125e-06 9.191687613818722e-07
+18 3.814697265625e-06 4.5959745059720447e-07
+19 1.9073486328125e-06 2.2980815722606351e-07
+20 9.5367431640625e-07 1.1496444224379232e-07
+21 4.76837158203125e-07 5.751348092219999e-08
+22 2.384185791015625e-07 2.8875311752774024e-08
+23 1.1920928955078125e-07 1.4905473133541847e-08
+24 5.960464477539063e-08 7.920553823925758e-09
+25 2.9802322387695312e-08 5.126586100079322e-09
+26 1.4901161193847656e-08 3.2639409508483652e-09
+27 7.450580596923828e-09 3.2639409508483652e-09
+28 3.725290298461914e-09 1.0714521547772193e-08
+29 1.862645149230957e-09 2.561568274161985e-08
+30 9.313225746154785e-10 5.541800512931516e-08
+31 4.656612873077393e-10 1.1502264990470579e-07
+32 2.3283064365386963e-10 2.3423193945548704e-07
+33 1.1641532182693481e-10 4.7265051855704954e-07
+34 5.820766091346741e-11 4.186639646075463e-09
+35 2.9103830456733704e-11 9.494876767601745e-07
+36 1.4551915228366852e-11 2.8568363095726745e-06
+37 7.275957614183426e-12 1.0486230840822675e-05
+38 3.637978807091713e-12 1.8115625372072675e-05
+39 1.8189894035458565e-12 3.3374414434572675e-05
+40 9.094947017729282e-13 2.8568363095726745e-06
+41 4.547473508864641e-13 6.389199255957267e-05
+42 2.2737367544323206e-13 6.389199255957267e-05
+43 1.1368683772161603e-13 0.0003080326175595727
+44 5.684341886080802e-14 0.0012845951175595727
+45 2.842170943040401e-14 0.0022611576175595727
+46 1.4210854715202004e-14 0.006167407617559573
+47 7.105427357601002e-15 0.0022611576175595727
+48 3.552713678800501e-15 0.017886157617559573
+49 1.7763568394002505e-15 0.03351115761755957
+</code></pre>
+<p>The  fact is that the error is getting larger as <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> is decreased. We could spend a minute or two formatting the output to make it more readable.</p>
+<pre><code>Index:     0,  h:       1.00000000  error:      0.0574272635
+Index:     1,  h:       0.50000000  error:      0.0415032844
+Index:     2,  h:       0.25000000  error:      0.0249857039
+Index:     3,  h:       0.12500000  error:      0.0137142256
+Index:     4,  h:       0.06250000  error:      0.0071853286
+Index:     5,  h:       0.03125000  error:      0.0036777505
+Index:     6,  h:       0.01562500  error:      0.0018605372
+Index:     7,  h:       0.00781250  error:      0.0009357336
+Index:     8,  h:       0.00390625  error:      0.0004692393
+Index:     9,  h:       0.00195312  error:      0.0002349636
+Index:    10,  h:       0.00097656  error:      0.0001175678
+Index:    11,  h:       0.00048828  error:      0.0000588055
+Index:    12,  h:       0.00024414  error:      0.0000294081
+Index:    13,  h:       0.00012207  error:      0.0000147054
+Index:    14,  h:       0.00006104  error:      0.0000073530
+Index:    15,  h:       0.00003052  error:      0.0000036766
+Index:    16,  h:       0.00001526  error:      0.0000018383
+Index:    17,  h:       0.00000763  error:      0.0000009192
+Index:    18,  h:       0.00000381  error:      0.0000004596
+Index:    19,  h:       0.00000191  error:      0.0000002298
+Index:    20,  h:       0.00000095  error:      0.0000001150
+Index:    21,  h:       0.00000048  error:      0.0000000575
+Index:    22,  h:       0.00000024  error:      0.0000000289
+Index:    23,  h:       0.00000012  error:      0.0000000149
+Index:    24,  h:       0.00000006  error:      0.0000000079
+Index:    25,  h:       0.00000003  error:      0.0000000051
+Index:    26,  h:       0.00000001  error:      0.0000000033
+Index:    27,  h:       0.00000001  error:      0.0000000033
+Index:    28,  h:       0.00000000  error:      0.0000000107
+Index:    29,  h:       0.00000000  error:      0.0000000256
+Index:    30,  h:       0.00000000  error:      0.0000000554
+Index:    31,  h:       0.00000000  error:      0.0000001150
+Index:    32,  h:       0.00000000  error:      0.0000002342
+Index:    33,  h:       0.00000000  error:      0.0000004727
+Index:    34,  h:       0.00000000  error:      0.0000000042
+Index:    35,  h:       0.00000000  error:      0.0000009495
+Index:    36,  h:       0.00000000  error:      0.0000028568
+Index:    37,  h:       0.00000000  error:      0.0000104862
+Index:    38,  h:       0.00000000  error:      0.0000181156
+Index:    39,  h:       0.00000000  error:      0.0000333744
+Index:    40,  h:       0.00000000  error:      0.0000028568
+Index:    41,  h:       0.00000000  error:      0.0000638920
+Index:    42,  h:       0.00000000  error:      0.0000638920
+Index:    43,  h:       0.00000000  error:      0.0003080326
+Index:    44,  h:       0.00000000  error:      0.0012845951
+Index:    45,  h:       0.00000000  error:      0.0022611576
+Index:    46,  h:       0.00000000  error:      0.0061674076
+Index:    47,  h:       0.00000000  error:      0.0022611576
+Index:    48,  h:       0.00000000  error:      0.0178861576
+Index:    49,  h:       0.00000000  error:      0.0335111576
+</code></pre>
+<p>From this we can clearly see that the error decreases as <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> the error between the "exact" value is decreasing. Then at some point the error starts to get larger and keeps getting larger.</p>
+<p><img alt="Graph of Difference between Approximate and Exact Vales" src="./images/error_vs_h.png"></p>
+<p>Using graphical output is sometimes very useful. As they say a picture can be worth a thousand words. Keep in mind that we are interested in how the approximations behave as <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow>h\rightarrow 0</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span><span class="mrel">→</span><span class="mord mathrm">0</span></span></span></span>. This means viewing the graph from right to left. Decreasing <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> means looking at the results near the origin in the plot. If is clear that something seems to be wrong in that the difference between the approximate and exact values is growing near zero.</p>
+<h3 id="questions-about-the-results">Questions About the Results</h3>
+<p>There are a couple of questions any attentive reader should ask based on the results above. The code has dutifully generated a list of numbers that should provide an approximation of a derivative to the problem. It appears that the values are getting closer to a value. This generates the first question:</p>
+<p><strong>Question 1</strong> How good is the approximation for any value <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> and as <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> tends to zero how fast is the approximation approaching the exact value?</p>
+<p>For this first question, we will use a bit of calculus to analyze the approximations as <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> tends to zero. We will use an application of the Taylor series with remainder to answer this questions.</p>
+<p>There is another serious problem in the list of approximations generated by the Python code included in this section. The difference between the approximation decreases, like it should, and then abruptly increases. Mathematically speaking, this is a huge problem. This generates the second equation:</p>
+<p><strong>Question  2:</strong> Why is there an abrupt change in the difference when it should continue to decrease?</p>
+<p>We need to deal with Question 2 first since it is a bit more fundamental due to the way our computers work. So, the next lesson will treat the abrupt increase in the difference between the approximate result and the "exact" result in the approximation process.</p>
+<p>...... and why does your instructor keep using "exact" instead of just using the term exact........</p>
+<p>This will also lead to the lesson on computer number system, number representation and floating point arithmetic.</p>
+<h3 id="questions-and-problems">Questions and Problems</h3>
+<p>For all the problems in this lesson you are more than welcome to download the Python Code in the lesson as a starting point for doing calculations and see the results. If you are not used to Python, you are welcome to use another language</p>
+<p><strong>Question 1:</strong> Repeat the approximation of a derivative for the following functions:</p>
+<p><strong>a.</strong>  Define <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>sin</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>f(x)=\sin(x)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop">sin</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span> and  <span class="katex"><span class="katex-mathml"><math><mrow><mi>a</mi><mo>=</mo><mfrac><mrow><mi>π</mi></mrow><mrow><mn>4</mn></mrow></mfrac></mrow>a=\frac{\pi}{4}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.695392em;" class="strut"></span><span style="height:1.040392em;vertical-align:-0.345em;" class="strut bottom"></span><span class="base"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.695392em;" class="vlist"><span style="top:-2.6550000000000002em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">4</span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.394em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span style="margin-right:0.03588em;" class="mord mathit mtight">π</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.345em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>. Find the <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> where the difference starts increasing as <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow>h\rightarrow 0</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span><span class="mrel">→</span><span class="mord mathrm">0</span></span></span></span>.</p>
+<p><strong>b.</strong> Define <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>tan</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>f(x)=\tan(x)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop">tan</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><mrow><mi>a</mi><mo>=</mo><mfrac><mrow><mi>π</mi></mrow><mrow><mn>3</mn></mrow></mfrac></mrow>a=\frac{\pi}{3}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.695392em;" class="strut"></span><span style="height:1.040392em;vertical-align:-0.345em;" class="strut bottom"></span><span class="base"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.695392em;" class="vlist"><span style="top:-2.6550000000000002em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">3</span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.394em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span style="margin-right:0.03588em;" class="mord mathit mtight">π</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.345em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>. Find the <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> where the difference starts increasing.</p>
+<p><strong>Question 2:</strong>  Problems about finding an <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> to give some order of approximation</p>
+<p><strong>a.</strong> Define <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>cosh</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>f(x)=\cosh(x)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop">cosh</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span> and  <span class="katex"><span class="katex-mathml"><math><mrow><mi>a</mi><mo>=</mo><mfrac><mrow><mi>π</mi></mrow><mrow><mn>4</mn></mrow></mfrac></mrow>a=\frac{\pi}{4}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.695392em;" class="strut"></span><span style="height:1.040392em;vertical-align:-0.345em;" class="strut bottom"></span><span class="base"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.695392em;" class="vlist"><span style="top:-2.6550000000000002em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">4</span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.394em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span style="margin-right:0.03588em;" class="mord mathit mtight">π</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.345em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>. Find a value of <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> small enough so that the difference between the exact and approximate  values is less than <span class="katex"><span class="katex-mathml"><math><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>4</mn></mrow></msup></mrow>10^{-4}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.8141079999999999em;" class="strut"></span><span style="height:0.8141079999999999em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8141079999999999em;" class="vlist"><span style="top:-3.063em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">4</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
+<p><strong>b.</strong> Define <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>tanh</mi><mo>(</mo><mn>2</mn><mi>x</mi><mo>)</mo></mrow>f(x)=\tanh(2x)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mop">tanh</span><span class="mopen">(</span><span class="mord mathrm">2</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow>a=0</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.64444em;" class="strut"></span><span style="height:0.64444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord mathrm">0</span></span></span></span>. Find a value of <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> small enough so that the difference between the exact value and approximate value is at most <span class="katex"><span class="katex-mathml"><math><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow>10^{-6}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.8141079999999999em;" class="strut"></span><span style="height:0.8141079999999999em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8141079999999999em;" class="vlist"><span style="top:-3.063em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">6</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
+<p><strong>Question 3:</strong> Finding a range of values of the increment, <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span>, so that the approximation is in a range of errors.</p>
+<p><strong>a.</strong> Define <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mi>x</mi><mi>ln</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow>f(x)=x\ln(x)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.75em;" class="strut"></span><span style="height:1em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord mathit">x</span><span class="mop">ln</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><mrow><mi>a</mi><mo>=</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mn>1</mn><mn>0</mn></mrow></mfrac></mrow>a=\frac{1}{10}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.845108em;" class="strut"></span><span style="height:1.190108em;vertical-align:-0.345em;" class="strut bottom"></span><span class="base"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.845108em;" class="vlist"><span style="top:-2.6550000000000002em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="mord mathrm mtight">0</span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.394em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.345em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>. Find a range of <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span> that keep the difference between the exact and approximate derivative value are between <span class="katex"><span class="katex-mathml"><math><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow>10^{-6}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.8141079999999999em;" class="strut"></span><span style="height:0.8141079999999999em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8141079999999999em;" class="vlist"><span style="top:-3.063em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">6</span></span></span></span></span></span></span></span></span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow>10^{-1}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.8141079999999999em;" class="strut"></span><span style="height:0.8141079999999999em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8141079999999999em;" class="vlist"><span style="top:-3.063em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>.</p>
+<p><strong>b.</strong> Define <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msup><mi>e</mi><mrow><mo>−</mo><mn>3</mn><mi>x</mi></mrow></msup><mtext>&nbsp;</mtext><mi>s</mi><mi>i</mi><mi>n</mi><mo>(</mo><mn>2</mn><mi>x</mi><mo>)</mo></mrow>f(x)=e^{-3x}\ sin(2x)</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.8141079999999999em;" class="strut"></span><span style="height:1.064108em;vertical-align:-0.25em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span><span class="mopen">(</span><span class="mord mathit">x</span><span class="mclose">)</span><span class="mrel">=</span><span class="mord"><span class="mord mathit">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8141079999999999em;" class="vlist"><span style="top:-3.063em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">3</span><span class="mord mathit mtight">x</span></span></span></span></span></span></span></span></span><span class="mord mathit"><span class="mspace">&nbsp;</span><span class="mord mathit">s</span></span><span class="mord mathit">i</span><span class="mord mathit">n</span><span class="mopen">(</span><span class="mord mathrm">2</span><span class="mord mathit">x</span><span class="mclose">)</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math><mrow><mi>a</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mn>1</mn></mrow><mrow><mn>1</mn><mn>2</mn></mrow></mfrac></mrow>a=\frac{11}{12}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.845108em;" class="strut"></span><span style="height:1.190108em;vertical-align:-0.345em;" class="strut bottom"></span><span class="base"><span class="mord mathit">a</span><span class="mrel">=</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span style="height:0.845108em;" class="vlist"><span style="top:-2.6550000000000002em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="mord mathrm mtight">2</span></span></span></span><span style="top:-3.23em;"><span style="height:3em;" class="pstrut"></span><span style="border-bottom-width:0.04em;" class="frac-line"></span></span><span style="top:-3.394em;"><span style="height:3em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathrm mtight">1</span><span class="mord mathrm mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span style="height:0.345em;" class="vlist"></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>. Find a range of increments, <span class="katex"><span class="katex-mathml"><math><mrow><mi>h</mi></mrow>h</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.69444em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathit">h</span></span></span></span>, so that the difference between the exact and approximate values of the derivative of <span class="katex"><span class="katex-mathml"><math><mrow><mi>f</mi></mrow>f</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.69444em;" class="strut"></span><span style="height:0.8888799999999999em;vertical-align:-0.19444em;" class="strut bottom"></span><span class="base"><span style="margin-right:0.10764em;" class="mord mathit">f</span></span></span></span> is between <span class="katex"><span class="katex-mathml"><math><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>5</mn></mrow></msup></mrow>10^{-5}</math></span><span aria-hidden="true" class="katex-html"><span style="height:0.8141079999999999em;" class="strut"></span><span style="height:0.8141079999999999em;vertical-align:0em;" class="strut bottom"></span><span class="base"><span class="mord mathrm">1</span><span class="mord"><span class="mord mathrm">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span style="height:0.8141079999999999em;" class="vlist"><span style="top:-3.063em;margin-right:0.05em;"><span style="height:2.7em;" class="pstrut"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mathrm mtight">5</span></span></span></span></span></span></span></span></span></span></span></span> and <span class="katex katex--error">10^</span></p>
+<p><strong>Question 4</strong>  Problems involving the other one-sided approximation of the derivative.</p>
+<p><strong>a.</strong> Repeat 1.a using the other one-sided difference.</p>
+<p><strong>b.</strong> Repeat 1.b using the other one-sided difference.</p>
+<p><strong>Question 5</strong>  Problems involving the other one-sided approximation of the derivative.</p>
+<p><strong>a.</strong> Repeat 2.a using the other one-sided difference.</p>
+<p><strong>b.</strong> Repeat 2.b using the other one-sided difference.</p>
+<p><strong>Question 6</strong>  Problems involving the central difference approximation of the derivative.</p>
+<p><strong>a.</strong> Repeat 3.a using the central difference.</p>
+<p><strong>b.</strong> Repeat 3.b using the other one-sided difference.</p>
+<p><strong>Question 7</strong> Comparing the one-sided method to the other one-sided approximation on the following.</p>
+<p><strong>a.</strong> Repeat 1.a and compare the one-sided differences.</p>
+<p><strong>b.</strong> Repeat 2.b and compare the one-sided differences.</p>
+<p><strong>c.</strong> Repeat 3.a and compare the one-sided differences.</p>
+<p><strong>Question 8</strong> Comparing the original one-sided method to the central difference approximation on the following.</p>
+<p><strong>a.</strong> Repeat 1.b and compare the one-sided difference to the central difference approximation.</p>
+<p><strong>b.</strong> Repeat 2.a and compare the one-sided difference to the central difference approximations.</p>
+<p><strong>c.</strong> Repeat 3.b and compare the one-sided difference to the central difference approximations.</p>
+<p><strong>Question 9</strong> What is a finite difference approximation of a derivative?</p>
+<p><strong>Question 10</strong> What does it mean to approximate a derivative?</p>
+<p><strong>Question 11</strong> How is the symbolic derivative of a function interpreted geometrically? How should the one-sided difference quotient be interpreted?</p>
+<p><strong>Question 12:</strong> Give a geometric description for the centered difference approximation for the derivative of a function.</p>
+<h5 id="references">References</h5>
+<ul>
+<li><a href="./src/derivative_approximation.py">Python Code</a> used in the lesson. This is freely usable for the problems above and was developed in IDLE</li>
+<li><a href="https://docs.python.org/3/library/idle.html">IDLE documentation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Derivative">Wikipedia Page on the Derivative</a></li>
+</ul>
+
+</body>
+</html>
