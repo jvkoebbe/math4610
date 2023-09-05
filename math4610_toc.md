@@ -11,6 +11,6 @@ Math 4610: Table of Contents:
 
 * Lecture Materials: Week 2
   * [Cygwin Installation and Usage](./FCM/FCM_MODULES/FCM_CYGWIN/installing_cygwin.md)
-  * 
+  * [Coding Example 1](./FCM/FCM_MODULES/FCM_CODING_EXAMPLE_1/coding_example_1.md)
 
 <hr>
