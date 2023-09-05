@@ -1,7 +1,7 @@
 Math 4610: Table of Contents:
 <hr>
 
-* Lecture Materials: Day 1
+* Lecture Materials: Week 1
   * [A Very Short Intro to Github](https://github.com)
   * [Syllabus for the Course](./syllabus/syllabus.md)
   * [Hardware Virtualization](./FCM/FCM_MODULES/FCM_VIRTUALIZATION/virtualization.md)
@@ -9,7 +9,8 @@ Math 4610: Table of Contents:
 
 <hr>
 
-* Lecture Materials: Day 2
+* Lecture Materials: Week 2
+  * [Cygwin Installation and Usage](./FCM/FCM_MODULES/FCM_CYGWIN/installing_cygwin.md)
   * 
 
 <hr>
