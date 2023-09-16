@@ -18,7 +18,7 @@ Math 4610: Table of Contents:
 
 Math 2280 Course Materials for Students
 
-| [Syllabus](./syllabus/syllabus.md) | Week 1 | [Module 1](./FCM/FCM_MODULES/.pdf) |
+| [Syllabus](./syllabus/syllabus.md) | Week 1 | [A Brief Experience with Github](https;//www.github.com/) |
 | :--------------------------------- | :------ | :---------------------------------- |
 |[Suggested Homework Problems](./suggested_problems/suggested_problems.md) |                 | [Syllabus](./syllabus/syllabus.md) |
 |                                                                          |                 | [Day 3](./daily_lectures/day3.pdf) |
