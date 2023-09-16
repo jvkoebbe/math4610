@@ -2,9 +2,6 @@ Math 4610: Table of Contents:
 <hr>
 
 * Lecture Materials: Week 1
-  * [A Very Short Intro to Github](https://github.com)
-  * [Syllabus for the Course](./syllabus/syllabus.md)
-  * [Hardware Virtualization](./FCM/FCM_MODULES/FCM_VIRTUALIZATION/virtualization.pdf)
   * [How to Build a Virtual Machine (VM)](./FCM/FCM_MODULES/FCM_VIRTUAL_MACHINE/virtual_machines.pdf)
 
 <hr>
@@ -21,7 +18,7 @@ Math 2280 Course Materials for Students
 | [Syllabus](./syllabus/syllabus.md) | Week 1 | [A Brief Experience with Github](https://www.github.com) |
 | :--------------------------------- | :------ | :------------------------------------------------------ |
 |                                    |         | [Syllabus](./syllabus/syllabus.md) |
-|                                    |         | [Day 3](./daily_lectures/day3.pdf) |
+|                                    |         | [Day 3](./FCM/FCM_MODULES/FCM_VIRTUALIZATION/virtualization.pdf) |
 |                                                                          | Homework 1      | [1.3a,d,f,g, 1.4a,d, 1.5, 1.7, 1.9, 1.10](./homework_solutions/hw_01_solns.pdf) |
 |                                                                          | [Practice Quiz 1](./quizzes/practice_quiz_01.pdf) | [Solutions](./quizzes/practice_quiz_01_solns.pdf) |
 |                                                                          | [Quiz 1](./quizzes/quiz_01.pdf)                   | [Solutions](./quizzes/quiz_01_solns.pdf) |
