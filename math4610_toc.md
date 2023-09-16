@@ -16,9 +16,8 @@ Math 4610: Table of Contents:
 Math 2280 Course Materials for Students
 
 | [Syllabus](./syllabus/syllabus.md) | Week 1 | [A Brief Experience with Github](https://www.github.com) |
-| :--------------------------------- | :------ | :------------------------------------------------------ |
-|                                    |         | [Syllabus](./syllabus/syllabus.md) |
-|                                    |         | [Virtualization](./FCM/FCM_MODULES/FCM_VIRTUALIZATION/virtualization.pdf) |
-|                                                                          | Homework 1      | [1.3a,d,f,g, 1.4a,d, 1.5, 1.7, 1.9, 1.10](./homework_solutions/hw_01_solns.pdf) |
-|                                                                          | [Practice Quiz 1](./quizzes/practice_quiz_01.pdf) | [Solutions](./quizzes/practice_quiz_01_solns.pdf) |
-|                                                                          | [Quiz 1](./quizzes/quiz_01.pdf)                   | [Solutions](./quizzes/quiz_01_solns.pdf) |
+| :--------------------------------- | :--------- | :------------------------------------------------------ |
+|                                    |            | [Syllabus](./syllabus/syllabus.md) |
+|                                    |            | [Virtualization](./FCM/FCM_MODULES/FCM_VIRTUALIZATION/virtualization.pdf) |
+|                                    |            | [Virtualization](./FCM/FCM_MODULES/FCM_VIRTUALIZATION/virtualization.pdf) |
+|                                    | Homework 1 | [1.3a,d,f,g, 1.4a,d, 1.5, 1.7, 1.9, 1.10](./homework_solutions/hw_01_solns.pdf) |
