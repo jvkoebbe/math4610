@@ -15,4 +15,4 @@ Math 4610 Course Materials for Students in Math 4610
 |                                    | Week 2     | [Cygwin Installation and Usage](./FCM/FCM_MODULES/FCM_CYGWIN/installing_cygwin.pdf)               |
 |                                    |            | [Coding Example 1](./FCM/FCM_MODULES/FCM_CODING_EXAMPLE_1/coding_example_1.pdf)                   |
 |                                    |            | [Sources of Error](./FCM/FCM_MODULES/FCM_COMPUTATIONAL_ERROR/conputational_error.pdf)             |
-|                                    | Homework 2 | [Questions and Problems](./homework/questions_for_assign2.md)                                                                                                  |
+|                                    | Homework 2 | [Questions and Problems](./homework/questions_for_assign2.pdf)                                                                                                  |
