@@ -2,6 +2,8 @@
 This is a template file for building an entry in the student software manual project. You should use the formatting below to
 define an entry in your software manual.
 
+<hr>
+
 **Routine Name:**           smaceps
 
 **Author:** Joe Koebbe
