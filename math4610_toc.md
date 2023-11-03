@@ -21,5 +21,6 @@ Math 4610 Course Materials for Students in Math 4610
 |                                    | 4          |                                                                                                                  |
 |                                    | Homework 4 |  Shared library?                                                                                                 |
 |                                    | 5          |                                                                                                                  |
-|                                    | Homework 5 | [Questions for Homework 5](./FCM/FCM_MODULES/FCM_EXTRA_HW/questions_for_assign5.md) - due Monday, October 30      |
+|                                    | Homework 5 | [Questions for Homework 5](./FCM/FCM_MODULES/FCM_EXTRA_HW/questions_for_assign5.md) - due Friday, November 3     |
 |                                    | Homework 6 | Office visit #2 - due Thursday, October 19                                                                       |
+|                                    | Homework 5 | [Questions for Homework 6](./FCM/FCM_MODULES/FCM_EXTRA_HW/questions_for_assign6.md) - due Friday, November 10     |
