@@ -25,3 +25,4 @@ Math 4610 Course Materials for Students in Math 4610
 |                                    | Homework 6 | Office visit #2 - due Thursday, October 19                                                                       |
 |                                    | Homework 6 | [Questions for Homework 6](./FCM/FCM_MODULES/FCM_EXTRA_HW/questions_for_assign6.md) - due Monday, November 13    |
 |                                    | Homework 7 | [Questions for Homework 7](./FCM/FCM_MODULES/FCM_EXTRA_HW/questions_for_assign7.md) - due Monday, November 27    |
+|                                    | Homework 8 | [Questions for Homework 8](./FCM/FCM_MODULES/FCM_EXTRA_HW/questions_for_assign8.md) - due: Last day of finals    |
